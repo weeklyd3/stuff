@@ -88,6 +88,7 @@ Keeping watch lets you upload good copies before it's too late. You can alert pe
 
 CORRUPTION LOG
 For example: At 1/1/2021, 65.222.202.53 (it's okay if you don't know the username or IP address) spammed.
+At 2/27/2021, user weeklyd3 made a fatal change and had to recreate the repository.
 
 Type here!
 END OF CORRUPTION LOG
@@ -95,7 +96,8 @@ END OF CORRUPTION LOG
 V. Client App
 There's a way of making a Python file that encloses our website in a Chrome window:
 
-http://weeklyd3.github.io/resources/client.py
+http://weeklyd3.github.io/resources/client.txt
+(Rename file to client.py after download)
 
 Run the following code:
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files$ pip install pyinstaller
