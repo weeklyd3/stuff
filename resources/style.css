@@ -78,3 +78,6 @@ input[type=text] {
 	-moz-user-select:none;
 	-webkit-user-select:none;
 }
+a:visited {
+	color:blue;
+}
