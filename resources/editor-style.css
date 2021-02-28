@@ -1,0 +1,12 @@
+/* This document offers additional styling for the editor interface. */
+button {
+	height:100%;
+	background-color:white;
+	color:black;
+	transition:background-color 0.3s;
+    font-size:13px;
+}
+button:hover {
+	background-color:#00ffff;
+}
+h1,p { font-family: "Times New Roman"; }

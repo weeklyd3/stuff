@@ -1,0 +1,146 @@
+<link rel="stylesheet" href="/resources/style.css" />
+<link rel="stylesheet" href="/resources/editor-style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <title>Debug Page -- For Developers ONLY!</title>
+</head>
+<!--<script src="/resources/jquery.min.js"></script>-->
+<div class="tab" style="overflow-y:scroll;">
+  <button class="tablinks" onclick="showTab(event, 'File')">File</button>
+  <button class="tablinks" onclick="showTab(event, 'Home')">Home</button>
+  <button class="tablinks" onclick="showTab(event, 'Insert')">Insert</button>
+  <button class="tablinks" onclick="showTab(event, 'View')">View</button>
+  <button class="tablinks" onclick="showTab(event, 'Help')">Help</button>
+</div>
+<div height="10%">
+<div id="File" class="tabcontent">
+  <button onclick="download()" title="Download file for backup purposes">Download</button>
+  <button onclick="preview()" title="Preview post">Preview</button>
+  <button title="Quit the editor and start it again" onclick="document.getElementById('quit').showModal();">Quit and restart</button>
+  <button onclick="document.getElementById('update').showModal();" title="Reload script files but keep work intact">Update Scripts</button>
+</div>
+
+<div id="Home" class="tabcontent">
+    <button onclick="document.getElementById('login').showModal();" title="Submit login information">Log In</button>
+    <button onclick="writeSelection('&lt;b&gt;','&lt;/b&gt;');">Bold</button>
+	<button onclick="document.getElementById('apps').showModal();">Apps</button>
+</div>
+
+<div id="Insert" class="tabcontent">
+  <button onclick="insertAtCursor(writehere, '&amp;lt;')">Insert &lt;</button>
+<button onclick="insertAtCursor(writehere, '&amp;gt;')">Insert &gt;</button>
+<button onclick="insertAtCursor(writehere, '&amp;amp;')">Insert &amp;</button>
+  <button onclick="document.getElementById('hyperlink').showModal();">Insert Hyperlink</button>
+  <button onclick="document.getElementById('image').showModal();">Insert Image/Picture</button>
+</div>
+<div id="View" class="tabcontent">
+ <button onclick="document.getElementById('zoom').showModal();">Adjust Zoom Level</button>
+</div>
+<div id="Help" class="tabcontent">
+ <button onclick="document.getElementById('help').showModal();">Get Help</button>
+ <button onclick="document.getElementById('help1').showModal();">Quick Help</button>
+</div>
+<style>* { overflow-y:scroll; }</style>
+<div width="100%" height="75%">
+<textarea id="writehere" style="width:100%; height:75%; font-size:13px; resize:none;" onblur="this.focus();"></textarea>
+</div>
+<!--This is the code for the dialogs.-->
+<!--Be patient.-->
+<dialog id="hyperlink">
+	<p>Enter the URL to go to (http:// or https:// required): <input type="text" id="hyperlink1" value="https://www.example.com"></p>
+	<p>Link text: <input type="text" value="Click me" id="hyperlink2"></p>
+	<button onclick="hyperlink()">Let's Go!</button><br><span id="hyperlink3">Insert the required data and then click "Let's Go!"</span><br>
+	<button onclick="document.getElementById('hyperlink').close();">Close</button>
+</dialog>
+<dialog id="image">
+	<p>Enter the image URL. (Use a direct link like "http://example.com/file.png".)<br>
+	<input type="text" style="width:100%;" id="image1" value="https://weeklyd3.repl.co/resources/sample-image.png">
+	</p>
+    <p>[OPTIONAL] Enter the alt text. This text will be displayed if the image is unavailable.
+    <input type="text" style="width:100%;" id="image2" value="" />
+    </p>
+    <p>[OPTIONAL] Enter the title text. This text will be displayed if the user hovers over the image.
+    <input type="text" style="width:100%;" id="image3" value="" />
+    </p>
+	<button onclick="image()">Finish</button>
+	<br><p id="image2">Insert the data and click Finish.</p><br>
+	<button onclick="document.getElementById('image').close();">Close</button>
+</dialog>
+<dialog id="download">
+	<p>Click the link below to download your article.</p>
+	<a href="#" download id="download1">Generate the File to Download</a>
+	<textarea id="download2" style="width:100%;"></textarea>
+	<button onclick="document.getElementById('download').close();">Close</button>
+</dialog>
+<dialog id="zoom">
+	<p>Enter the view text size in pixels (default is 13): 
+	<input type="number" id="zoom1"></p>
+	<button onclick="zoom()">Apply My Changes</button>
+</dialog>
+<dialog id="preview">
+	<h1 id="preview0" style="position:sticky; color:#00ffff; top:0; background-color:#000000;">Here's a preview of your post.&nbsp;<button onclick="document.getElementById('preview').close();">Close</button><button onclick="PrintElem('preview1')">Print</button></h1>
+	<div id="preview1" width="50%" height="50%" style="overflow-y:scroll;"></div>
+</dialog>
+<dialog id="quit">
+	<h1>Quit editor and start fresh?</h1>
+	<b>WARNING:&nbsp;</b><span>All unsaved work will be lost! Quit anyway?</span><br /><br />
+	<button onclick="document.getElementById('quit').close();">Cancel</button>
+	<span>&nbsp;&nbsp;</span>
+	<button onclick="location.reload();" style="color:white; background-color:red;">Exit</button>
+</dialog>
+<dialog id="help" style="width:50%; height:50%;">
+	<iframe src="https://help.weeklyd3.repl.co" frameBorder=1 width=95% height=87%>Your browser does not support &lt;iframe&gt;s.</iframe>
+	<button style="width:100%; height:10%; position:sticky; bottom:0;" onclick="document.getElementById('help').close();">Close Help Dialog</button>
+</dialog>
+<dialog id="help1">
+	<h1>Article Numbers</h1>
+	<p>Click "Get Help" and copy-paste the numbers.</p>
+	<table style="border:1px solid black; border-collapse:collapse;">
+		<tr>
+			<td>#</td>
+			<td>Article</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>Redirects to home</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Test Article</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>How To Clear Autofill</td>
+		</tr>
+        <tr>
+            <td>3</td>
+            <td>Introduction</td>
+        </tr>
+	</table>
+	<button onclick="document.getElementById('help1').close();" style="position:sticky; bottom:0;">Close</button>
+</dialog>
+<dialog id="login">
+    <h1>Log In</h1>
+    <p id="login0">Enter the information.</p><br>
+    <input type="text" id="login1" placeholder="Your Name" width="100%" /><br><br>
+    <input type="text" id="login2" placeholder="Article Title" width="100%" /><br><hr>
+    <button onclick="login()">Finish</button>
+</dialog>
+<dialog id="update">
+    <h1>Update script file</h1>
+    <p>This will take about 2 KB of cloud download data (if anyone cares). Do you really want to continue?</p>
+    <p id="pleasewait">Process not started</p>
+    <button onclick="document.getElementById('update').close();">No, continue without reloading</button>
+    <button style="background-color:00ff00; color:#000000;" onclick="load_js();">Yes, reload script file</button>
+</dialog>
+<dialog id="updatedone">
+    <h1>Script update complete</h1>
+    <p>The JavaScript file has been re-downloaded and loaded from the server.</p><br>
+    <button style="background-color:#00ff00; color:#00000;" onclick="document.getElementById('updatedone').close();">Finish</button>
+</dialog>
+<dialog id="apps" style="width:95%; height:95%;">
+	<div style="height:90%; width:95%;"><iframe src="/apps" width=100% height=100% ></iframe></div>
+	<div style="width:90%; height:10%;"><button height="100%" width="100%" onclick="document.getElementById('apps').close();">Minimize</button></div>
+</dialog>
+<!--TA-DA! THE JAVASCRIPT!-->
+<script src="/resources/script.js"></script>

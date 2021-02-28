@@ -1,0 +1,60 @@
+
+██╗░░██╗██╗██╗
+██║░░██║██║██║
+███████║██║██║
+██╔══██║██║╚═╝
+██║░░██║██║██╗
+╚═╝░░╚═╝╚═╝╚═╝
+
+█▄▄ █░█ ▀█▀   █▀▀ █ █▀█ █▀ ▀█▀ ░ ░ ░
+█▄█ █▄█ ░█░   █▀░ █ █▀▄ ▄█ ░█░ ▄ ▄ ▄░░╚═╝░░░╚═╝╚═╝╚═╝
+
+	"Good morning class, and welcome to HEESTEREE. But 
+	first, I want your blood!"
+								-- A vampire (ecreiP .sM)
+
+WEEKLYD3 EDITOR
+EULA [END-USER LICENSE AGREEMENT]
+Scroll down for more text...
+I'm sorry you have to read this, but software isn't protected without an EULA.
+
+It's tempting to just click <Accept> without reading it, but you should in case you violate the agreement, you should've known!
+
+BUT WHY MAKE ME AGREE TO THIS "EULA"!?
+If software has no license, it gets abused a lot by copyright violators and hackers. A license protects programs from these people by telling users what's allowed and what's not.
+
+This EULA uses the following terms:
+ * "Software" means the HTML editor, its source code, the CSS style sheet, and the JavaScript file it uses.
+ * "Licenser" means the writer of this license agreement.
+ * "EULA", "License Agreement", or "License" refers to this document.
+ * "IP Address" means that I pee. Not really. It's actually your computer's license plate on the Internet.
+
+Contents of this document:
+Summary [A brief description]
+Your Rights [What you can do]
+What You Can't Do [Don'ts]
+
+1. Summary
+ This EULA (End User License Agreement) is ann agreement that licenses the editor software. It should be observed before using any features. If you agree, give consent by clicking "Accept" on the editor's start page. If you do not agree, do so by clicking "Decline" on the editor's start page.
+
+2. Your Rights
+You have permission to:
+ * Use the software if you agree;
+ * Publish your work under a license of your choice;
+ * Distribute the source code with this EULA.
+ * Decompile the software. (Who would want to? It's already in plain, human-readable source code.)
+ * Use your own JavaScript and CSS in your articles by using <style>Your CSS Here</style> and <script>Your JavaScript here</script>. You can enforce your own licenses.
+ * Visit on Tor Browser. Tor is an anonymous browser that can be downloaded at https://www.torproject.org. We trust you not to spread viruses.
+3. What You Can't Do
+ * Sell the unmodified source.
+ * Edit the EULA (maybe using your Developer Tools or attacking the server 35.201.120.147, our server using dinosaurs, probably.) and pretend that some of these things are allowed.
+ * The server uses the Ubuntu server operating system. DO NOT TRY TO HACK IT or the hosting company will block your IP address. Never tried, but it'll probably happen.
+ * Spam. Don't post an article multiple times on purpose just to draw attention. If there are accidental duplicates, the duplicates will be deleted soon with only one copy left.
+ * Inject malicious JavaScript. JavaScript is a powerful programming language, and it can be used for bad purposes. We will remove malicious JavaScript as soon as it is discovered.
+ * Use the meta tag for advertising purposes to create redirects that promote certain sites: <meta http-equiv="refresh" content="0; URL='https://example.com/redirect-here'" />
+ * Take advantage that the JavaScript and CSS files are freely available by adding your own copyrights to them and rebranding them as your own.
+4. Thank You!
+ <You> Wait... This was not in the contents...
+ <Me>  It's a surprise!
+ Or did you just scroll down randomly and reach this page?
+ Anyway, thanks for actually reading this document, and -h-a-v-e---a---g-o-o-d---d-a-y- enjoy your time here!
