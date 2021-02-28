@@ -66,6 +66,7 @@
 }
 button {
 	border:1px solid black;
+	padding:7px;
 }
 input[type=text] {
 	border:1px solid black;
