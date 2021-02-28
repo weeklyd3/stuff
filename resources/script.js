@@ -87,6 +87,8 @@ console.log("LOADED: style.css");
 console.log("LOADED: editor-style.css");
 console.log("Loading login overlay...");
 document.getElementById('login').showModal();
+console.log("Opening 'Home' tab...")
+showTab(event, 'Home');
 console.log("Finished loading essential files.");
 
 /*
