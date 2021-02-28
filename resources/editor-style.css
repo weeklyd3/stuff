@@ -5,6 +5,12 @@ button {
 	color:black;
 	transition:background-color 0.3s;
     font-size:13px;
+	/* Vendor prefixes are so annoying. I need FIVE OF THEM! FIVE! */
+	user-select:none;
+	-o-user-select:none;
+	-ms-user-select:none;
+	-moz-user-select:none;
+	-webkit-user-select:none;
 }
 button:hover {
 	background-color:#00ffff;
