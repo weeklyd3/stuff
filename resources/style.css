@@ -64,3 +64,6 @@
 	color:black;
 	background-color:#00ffff;
 }
+button {
+	border:1px solid black;
+}
