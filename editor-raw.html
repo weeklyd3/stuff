@@ -40,6 +40,7 @@
 <button onclick="insertAtCursor(writehere, '&amp;amp;')">Insert &amp;</button>
   <button onclick="document.getElementById('hyperlink').showModal();">Insert Hyperlink</button>
   <button onclick="document.getElementById('image').showModal();">Insert Image/Picture</button>
+	<button onclick="document.getElementById('quote').showModal();">Insert Quote</button>
 </div>
 <div id="View" class="tabcontent">
  <button onclick="document.getElementById('zoom').showModal();">Adjust Zoom Level</button>
@@ -56,13 +57,13 @@
 <!--Be patient.-->
 <dialog id="hyperlink">
 	<p>Enter the URL to go to (http:// or https:// required): <input type="text" id="hyperlink1" value="https://www.example.com"></p>
-	<p>Link text: <input type="text" value="Click me" id="hyperlink2"></p>
+	<p>Link text: <input type="url" value="Click me" id="hyperlink2"></p>
 	<button onclick="hyperlink()">Let's Go!</button><br><span id="hyperlink3">Insert the required data and then click "Let's Go!"</span><br>
 	<button onclick="document.getElementById('hyperlink').close();">Close</button>
 </dialog>
 <dialog id="image">
 	<p>Enter the image URL. (Use a direct link like "http://example.com/file.png".)<br>
-	<input type="text" style="width:100%;" id="image1" value="https://weeklyd3.repl.co/resources/sample-image.png">
+	<input type="url" style="width:100%;" id="image1" value="https://weeklyd3.repl.co/resources/sample-image.png">
 	</p>
     <p>[OPTIONAL] Enter the alt text. This text will be displayed if the image is unavailable.
     <input type="text" style="width:100%;" id="image2" value="" />
@@ -155,6 +156,13 @@
 <dialog id="apps" style="width:95%; height:95%;">
 	<div style="height:90%; width:95%;"><iframe src="/apps" width=100% height=100% ></iframe></div>
 	<div style="width:90%; height:10%;"><button height="100%" width="100%" onclick="document.getElementById('apps').close();">Minimize</button></div>
+</dialog>
+<dialog id="quote">
+	<p>Text of the quote:</p>
+	<textarea rows="5" id="quote1" style="width:100%;" placeholder="I am saying this sentence."></textarea>
+	<p>Person who said the quote:</p>
+	<textarea rows="5" id="quote2" style="width:100%;" placeholder="John Doe"></textarea>
+	<button onclick="quote()">Finish</button><br><button onclick="document.getElementById('quote').close();">Cancel</button>
 </dialog>
 <!--TA-DA! THE JAVASCRIPT!-->
 <script src="/resources/jquery.min.js"></script>
