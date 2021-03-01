@@ -153,9 +153,12 @@ function preview() {
     console.log("--> Opening preview modal")
     document.getElementById("preview").showModal();
     console.log("--> Collecting user input...")
+    var authorname=document.getElementById('authorSpace').innerHTML;
+    var articletitle=document.getElementById('titleSpace').innerHTML;
     var rawtext=document.getElementById('writehere').value;
     var goodtext1='<style>#AAAAAAAAAA { font-family:"Times New Roman"; } </style><pre id="AAAAAAAAAA">'+rawtext+'</pre>';
     document.getElementById('preview1').innerHTML=goodtext1;
+    document.getElementById('preview0').innerHTML='Here\'\s a preview of your post, "'+articletitle+' by '+authorname+'.';
     console.log("SUCCESS: Finished gathering information!")
     console.log("SUCCESS: Preview started playing. Have fun!")
 }
@@ -189,28 +192,5 @@ function login() {
 function writeSelection(textbefore, textafter) {
 var selectionText = yourTextarea.value.substr(yourTextarea.selectionStart, yourTextarea.selectionEnd);
 yourTextarea.value = textbefore+ selectionText + textafter;
-}
-function CreatePDFfromHTML() {
-    var HTML_Width = $("#preview1").width();
-    var HTML_Height = $("#preview1").height();
-    var top_left_margin = 15;
-    var PDF_Width = HTML_Width + (top_left_margin * 2);
-    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-    var canvas_image_width = HTML_Width;
-    var canvas_image_height = HTML_Height;
-
-    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-
-    html2canvas($(".html-content")[0]).then(function (canvas) {
-        var imgData = canvas.toDataURL("image/jpeg", 1.0);
-        var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-        pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-        for (var i = 1; i <= totalPDFPages; i++) { 
-            pdf.addPage(PDF_Width, PDF_Height);
-            pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
-        }
-        pdf.save("MyDocument.pdf");
-        //$(".html-content").hide();
-    });
 }
 //EOF
