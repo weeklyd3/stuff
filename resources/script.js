@@ -158,7 +158,7 @@ function preview() {
     var rawtext=document.getElementById('writehere').value;
     var goodtext1='<style>#AAAAAAAAAA { font-family:"Times New Roman"; } </style><pre id="AAAAAAAAAA">'+rawtext+'</pre>';
     document.getElementById('preview1').innerHTML=goodtext1;
-    document.getElementById('preview0').innerHTML='Here\'\s a preview of your post, "'+articletitle+' by '+authorname+'.';
+    document.getElementById('preview0').innerHTML='Here\'\s a preview of your post, "'+articletitle+'" by '+authorname+'.';
     console.log("SUCCESS: Finished gathering information!")
     console.log("SUCCESS: Preview started playing. Have fun!")
 }
