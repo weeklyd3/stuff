@@ -165,6 +165,9 @@ function login() {
     console.log("--> Collecting user input...")
     var authorName=document.getElementById('login1').value;
     var articleTitle=document.getElementById('login2').value;
+    //Store some info in the information panel
+    document.getElementById('authorSpace').innerHTML=authorName;
+    document.getElementById('titleSpace').innerHTML=articleTitle;
     console.log("--> Validating user input...")
     if (authorName=="" || articleTitle=="") {
         console.log("FAILURE: Validation error returned.")
