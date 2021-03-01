@@ -162,6 +162,12 @@ function preview() {
     console.log("SUCCESS: Finished gathering information!")
     console.log("SUCCESS: Preview started playing. Have fun!")
 }
+function quote() {
+    var quotedtext=document.getElementById('quote1').value;
+    var speaker=document.getElementById('quote2').value;
+    insertAtCursor("<blockquote>"+quotedtext+"<br>"+"− "+speaker);
+    document.getElementById('quote').close();
+}
 function login() {
     var authorName;
     var articleTitle;
