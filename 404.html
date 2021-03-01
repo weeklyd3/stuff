@@ -10,7 +10,13 @@
  &bull; <a href="#" onclick="location.reload();">Reloading the page.</a>
 </pre>
 <link rel="stylesheet" href="/resources/style.css">
+  <script src="/resources/jquery.min.js"></script>
 <script>
 document.getElementById('error').innerHTML="We are sorry, "+location.href+" is unavailable.";
+$('a').click(
+  function() {
+  document.getElementById('error').innerHTML="Please wait...";
+  }
+  });
 </script>
 </html>
