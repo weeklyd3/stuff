@@ -59,16 +59,20 @@ IV. Protections Against Spam
 In a way, we are worse than Camazotz. SPAMBOTS can kill a whole piece of code into advertisements. At least no huge brain can do that.
 
 For example:
+  <p>Some good content here...</p>
+  <button onclick="spambot()">ACTIVATE THE MASS SPAMMER!</button>
   <script>
     function spambot() {
       //Erase the whole page
+      document.close();
+      //Opening a closed document erases everything.
+      document.open();
       document.write("Please watch the popup window.");
       var mywindow = window.open('', 'BAD CONTENT!!!', 'height=400,width=600');
       //Write intrusive content
       mywindow.document.write('<html><head><title>Sample Scam Advertisement</title>');
       mywindow.document.write('<body><h1>BUY NOW!!!</h1><br><a href="//example.com/offer-buy-now.html">Are you ready for the coolest offer of your life?</a></body></html>');
     }
-    spambot();
   </script>
 This is only a minor example. Actual spam looks worse. If you suspect spam, please restore the latest good revision.
 
@@ -108,3 +112,9 @@ AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/python_files$ pyinstaller --hidden-imp
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/python_files$ cd ./dist/client
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/python_files/dist/client$ .. client
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/python_files$ exit
+
+┌──────────────────────────────────────────────────────────┐
+│ NOTE:                                                    │
+│ Replace "~/python_files" with the directory containing   │
+│ the file "client.py". Otherwise, the commands will break.│
+└──────────────────────────────────────────────────────────┘
