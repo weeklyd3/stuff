@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <!--Hidden information panel (for storing input information)-->
-<div class="info" style="height:0;">
+<div class="info" style="height:0; overflow:scroll;">
+	<h1>Ha! Looks like you hacked the information panel and set its width to something greater than 0.</h1>
+	<h2>You should consider <a href="#" onclick="document.getElementById('info').style.height='0';">hiding it</a> soon to prevent others from stealing your information.</h2>
 	<p id="authorSpace"></p>
 	<p id="titleSpace"></p>
 </div>
@@ -20,6 +22,7 @@
 <div id="File" class="tabcontent">
   <button onclick="download()" title="Download file for backup purposes">Download</button>
   <button onclick="preview()" title="Preview post">Preview</button>
+  <button onclick="document.getElementById('info').style.height='100';">Reveal information panel (Advanced)</button>
   <button title="Quit the editor and start it again" onclick="document.getElementById('quit').showModal();">Quit and restart</button>
   <button onclick="document.getElementById('update').showModal();" title="Reload script files but keep work intact">Update Scripts</button>
 </div>
