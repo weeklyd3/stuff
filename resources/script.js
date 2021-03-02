@@ -165,7 +165,10 @@ function preview() {
 function quote() {
     var quotedtext=document.getElementById('quote1').value;
     var speaker=document.getElementById('quote2').value;
-    insertAtCursor(writehere,"&lt;blockquote&gt;"+quotedtext+"&lt;br&gt;"+"− "+speaker+"&lt;/blockquote&gt");
+    //For Windows (CR LF)
+    //CR=\r=carriage return
+    //LF=\n=line fall
+    insertAtCursor(writehere,"<blockquote>"+quotedtext+"\r\n"+"− "+speaker+"</blockquote>");
     document.getElementById('quote').close();
 }
 function login() {
