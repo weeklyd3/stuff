@@ -165,7 +165,7 @@ function preview() {
 function quote() {
     var quotedtext=document.getElementById('quote1').value;
     var speaker=document.getElementById('quote2').value;
-    insertAtCursor("&lt;blockquote&gt;"+quotedtext+"&lt;br&gt;"+"− "+speaker+"&lt;/blockquote&gt");
+    insertAtCursor(writehere,"&lt;blockquote&gt;"+quotedtext+"&lt;br&gt;"+"− "+speaker+"&lt;/blockquote&gt");
     document.getElementById('quote').close();
 }
 function login() {
