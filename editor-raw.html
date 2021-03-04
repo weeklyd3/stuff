@@ -1,6 +1,9 @@
 <head>
     <title>Debug Page -- For Developers ONLY!</title>
 	<link rel="stylesheet" href="/resources/style.css" />
+	<noscript style="z-index=2; position:fixed; background-color:blue; width:100%; height:100%;">
+		<pre style="color:white;">A problem has been detected. Error code: JAVASCRIPT_DISABLED
+This means that JavaScript is disabled in your browser. Please enable JavaScript, purge the cache, reload the page, and try again.</pre></noscript>
 <link rel="stylesheet" href="/resources/editor-style.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
@@ -147,7 +150,7 @@
 </dialog>
 <dialog id="update">
     <h1>Update script file</h1>
-    <p>This will take about 2 KB of cloud download data (if anyone cares). Do you really want to continue?</p>
+    <p>This will take about 9 KB of cloud download data (if anyone cares). Do you really want to continue?</p>
     <p id="pleasewait">Process not started</p>
     <button onclick="document.getElementById('update').close();">No, continue without reloading</button>
     <button style="background-color:00ff00; color:#000000;" onclick="load_js();">Yes, reload script file</button>
