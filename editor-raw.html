@@ -6,9 +6,10 @@
 </head>
 <body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();">
 	<div id="loadingmsg" style="background-color:white; position:fixed; top:0; left:0; width:100%; height:100%;">
-		<noscript style="z-index=; position:fixed; background-color:blue; width:100%; height:100%;">
-		<pre style="color:white;">A problem has been detected. Error code: JAVASCRIPT_DISABLED
-This means that JavaScript is disabled in your browser. Please enable JavaScript, purge the cache, reload the page, and try again.</pre></noscript>
+		<noscript style="z-index=2; position:fixed; background-color:blue; width:100%; height:100%;">
+		<code style="color:white;">A problem has been detected. Error code: JAVASCRIPT_DISABLED<br>
+This means that JavaScript is disabled in your browser. Please enable JavaScript, purge the cache, reload the page, and try again.<br>
+WARNING: Please do not delete this message with your Developer Tools. If you are at the main interface, nothing will work.</code></noscript>
 		<div style="text-align:center;">
 			<img src="/resources/loading.gif"><br><span>Please wait...</span>
 		</div>
