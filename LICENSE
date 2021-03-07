@@ -45,6 +45,7 @@ You have permission to:
  * Decompile the software. (Who would want to? It's already in plain, human-readable source code.)
  * Use your own JavaScript and CSS in your articles by using <style>Your CSS Here</style> and <script>Your JavaScript here</script>. You can enforce your own licenses.
  * Visit on Tor Browser. Tor is an anonymous browser that can be downloaded at https://www.torproject.org. We trust you not to spread viruses.
+   Note: We are not affilated with the Tor Project. Any trademarks in this document are the property of their owners.
 3. What You Can't Do
  * Sell the unmodified source.
  * Edit the EULA (maybe using your Developer Tools or attacking the server 35.201.120.147, our server using dinosaurs, probably.) and pretend that some of these things are allowed.
