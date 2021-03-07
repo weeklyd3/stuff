@@ -3,12 +3,13 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Error!</title>
-<h1 id="error"></h1>
+<h1 id="error">The page you were looking for is unavailable.</h1>
   <p>Try:</p>
   <pre>
- &bull; Going back to <a href="/">home page</a> and starting over
- &bull; <a href="#" onclick="location.reload();">Reloading the page.</a>
- &bull; <a href="https://github.com/weeklyd3/weeklyd3.github.io">Viewing the source code</a> and correcting broken links (ADVANCED)
+    <ul>
+<li>Going back to <a href="/">home page</a> and starting over</li>
+<li><a href="#" onclick="location.reload();">Reloading the page.</a></li>
+ <li><a href="https://github.com/weeklyd3/weeklyd3.github.io">Viewing the source code</a> and correcting broken links (ADVANCED)</li></ul>
 </pre>
 <link rel="stylesheet" href="/resources/style.css">
   <script src="/resources/jquery.min.js"></script>
@@ -19,4 +20,5 @@ $('a').click(
   document.getElementById('error').innerHTML="Please wait...";
   });
 </script>
+<style>*{text-align:center;}</style>
 </html>

@@ -52,6 +52,14 @@ You have permission to:
  * The server uses the Ubuntu server operating system. DO NOT TRY TO HACK IT or the hosting company will block your IP address. Never tried, but it'll probably happen.
  * Spam. Don't post an article multiple times on purpose just to draw attention. If there are accidental duplicates, the duplicates will be deleted soon with only one copy left.
  * Inject malicious JavaScript. JavaScript is a powerful programming language, and it can be used for bad purposes. We will remove malicious JavaScript as soon as it is discovered.
+	What's considered "malicious"?
+		* Cookie catchers.
+		* Redirects:
+			//jQuery
+			$('body').click(
+			function() {
+				window.location.replace('http://example.com/buy-now.html');
+			})
  * Use the meta tag for advertising purposes to create redirects that promote certain sites: <meta http-equiv="refresh" content="0; URL='https://example.com/redirect-here'" />
  * Take advantage that the JavaScript and CSS files are freely available by adding your own copyrights to them and rebranding them as your own.
 4. Thank You!
