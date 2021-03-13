@@ -48,7 +48,9 @@
 /* Style the tab content */
 .tabcontent {
   -webkit-user-select: none;
+  -moz-user-select:none;
   -ms-user-select: none;
+  -o-user-select:none;
   user-select: none;
   display: none;
   border: 1px solid #ccc;
@@ -71,12 +73,38 @@ button {
 input[type=text] {
 	border:1px solid black;
 	padding:7px;
-	/* Yikes. Vendor prefixes again. */
-	user-select:none;
-	-o-user-select:none;
-	-ms-user-select:none;
-	-moz-user-select:none;
-	-webkit-user-select:none;
+}
+::-webkit-placeholder {
+  -webkit-user-select: none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  user-select: none;
+  opacity:1;
+}
+::-moz-placeholder {
+  -webkit-user-select: none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  user-select: none;
+  opacity:1;
+}
+::-ms-placeholder {
+  -webkit-user-select: none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  user-select: none;
+  opacity:1;
+}
+::-o-placeholder {
+  -webkit-user-select: none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  user-select: none;
+  opacity:1;
 }
 a:visited {
 	color:blue;

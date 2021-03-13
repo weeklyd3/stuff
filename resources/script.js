@@ -11,7 +11,7 @@ $('textarea').keydown(function(e) {
     var end = this.selectionEnd;
 
     // set textarea value to: text before caret + tab + text after caret
-    spaces = "    ";
+    spaces = "	";
     this.value = this.value.substring(0, start) + spaces + this.value.substring(end);
 
     // put caret at right position again
