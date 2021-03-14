@@ -204,12 +204,14 @@ function login() {
         console.log("SUCCESS: Validation passed!")
         document.getElementById('login').close();
         if (authorName=='Administrator') {
+            document.getElementById('login0').innerHTML="Enter the administrator password to complete login."
             adminpass=prompt("Enter the administrator password:")
             if (adminpass=="timothy") {
                 alert("You are now logged in as Administrator.")
             } else {
                 alert("Wrong password, please try again.");
                 document.getElementById('login').showModal();
+                document.getElementById('login0').innerHTML="The administrator password is incorrect."
             }
         }
     }
