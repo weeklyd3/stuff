@@ -106,6 +106,14 @@ input[type=text] {
   user-select: none;
   opacity:1;
 }
+::placeholder {
+  -webkit-user-select: none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  user-select: none;
+  opacity:1;
+}
 a:visited {
 	color:blue;
 }
