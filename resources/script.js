@@ -171,7 +171,7 @@ function preview() {
     var authorname=document.getElementById('authorSpace').innerHTML;
     var articletitle=document.getElementById('titleSpace').innerHTML;
     var rawtext=document.getElementById('writehere').value;
-    var goodtext1='<style>#AAAAAAAAAA { font-family:"Times New Roman"; white-space: pre-wrap; } </style><pre id="AAAAAAAAAA">'+rawtext+'</pre>';
+    var goodtext1='<style>#AAAAAAAAAA { @page { size: 8.5in 11in; margin: 0.79in } font-family:"Times New Roman"; white-space: pre-wrap; } </style><pre id="AAAAAAAAAA">'+rawtext+'</pre>';
     document.getElementById('preview1').innerHTML=goodtext1;
     document.getElementById('preview0').innerHTML='Here\'\s a preview of your post, "'+articletitle+'" by '+authorname+'.';
     console.log("SUCCESS: Finished gathering information!")
