@@ -103,6 +103,7 @@ console.log("LOADED: editor-style.css");
 console.log("Loading login overlay...");
 console.log("Opening 'Home' tab...")
 showTab(event, 'Home');
+document.getElementById('writehere').focus();
 console.log("Finished loading essential files.");
 
 /*
@@ -213,6 +214,7 @@ function login() {
             }
         }
     }
+	document.getElementById('writehere').focus();
 }
 function writeSelection(textbefore, textafter) {
 var selectionText = yourTextarea.value.substr(yourTextarea.selectionStart, yourTextarea.selectionEnd);
