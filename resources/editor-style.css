@@ -12,6 +12,11 @@ button {
 	-moz-user-select:none;
 	-webkit-user-select:none;
 }
+
+textarea {
+	font-size:13px;
+}
+
 button:hover {
 	background-color:#00ffff;
 }
