@@ -119,9 +119,6 @@ a:visited {
 }
 /* Preview styling */
 #AAAAAAAAAA { 
-    @page { 
-        size: 8.5in 11in;
-        margin: 0.79in;
-    }
-    white-space: pre-wrap; 
+  font-family:"Times New Roman";
+  white-space: pre-wrap; 
 }

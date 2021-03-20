@@ -176,6 +176,7 @@ function preview() {
     document.getElementById('preview0').innerHTML='Here\'\s a preview of your post, "'+articletitle+'" by '+authorname+'.';
     console.log("SUCCESS: Finished gathering information!")
     console.log("SUCCESS: Preview started playing. Have fun!")
+    document.getElementById('preview2').style.display='none';
 }
 function quote() {
     var quotedtext=document.getElementById('quote1').value;
