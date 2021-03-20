@@ -117,3 +117,11 @@ input[type=text] {
 a:visited {
 	color:blue;
 }
+/* Preview styling */
+#AAAAAAAAAA { 
+    @page { 
+        size: 8.5in 11in;
+        margin: 0.79in;
+    }
+    white-space: pre-wrap; 
+}
