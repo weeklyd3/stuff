@@ -19,8 +19,7 @@ $('textarea').keydown(function(e) {
   }
 });
 
-function PrintElem(elem)
-{
+function PrintElem(elem) {
     var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
     mywindow.document.write('<html><head><title>Print This Post</title>');
@@ -36,8 +35,7 @@ function PrintElem(elem)
 
     return true;
 }
-function load_js()
-{
+function load_js() {
     var head= document.getElementsByTagName('head')[0];
     var script= document.createElement('script');
     console.log('--> Preparing to reload script file...')
