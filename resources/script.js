@@ -161,8 +161,12 @@ function download() {
 }
 function zoom() {
     var zoomlevel=document.getElementById('zoom1');
-    var zoomlevelstring=toString(zoomlevel);
-    document.getElementById("writehere").style.fontSize=zoomlevelstring+"px";
+    var zoomstyle=document.getElementById('zoomLevel');
+	// Delete previous zoom level data
+	zoomstyle.innerHTML="";
+	// Set new zoom level
+	zoomstyle.innerHTML='<style>#writehere { font-size: '+zoomlevel+'; } </style>'
+	console.log("SUCCESS: Complete.")
 }
 function preview() {
     console.log("--> Opening preview modal")
