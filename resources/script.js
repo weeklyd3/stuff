@@ -160,7 +160,7 @@ function download() {
     document.getElementById('download1').href=url;
 }
 function zoom() {
-    var zoomlevel=document.getElementById('zoom1');
+    var zoomlevel=document.getElementById('zoom1').value;
     var zoomstyle=document.getElementById('zoomLevel');
 	// Delete previous zoom level data
 	zoomstyle.innerHTML="";
