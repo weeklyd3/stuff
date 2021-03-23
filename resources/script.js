@@ -1,6 +1,6 @@
 /*Functions that do not work:
-*** download
-*** Font size (view)
+*** download [fixed on 3/22/2021]
+*** Font size (view) [fixed on 3/22/2021]
 */
 $('textarea').keydown(function(e) {
   var keyCode = e.keyCode || e.which;
@@ -222,5 +222,27 @@ function login() {
 function writeSelection(textbefore, textafter) {
 var selectionText = yourTextarea.value.substr(yourTextarea.selectionStart, yourTextarea.selectionEnd);
 yourTextarea.value = textbefore+ selectionText + textafter;
+}
+function download() {
+  var textToWrite = document.getElementById('writehere').value;
+  var textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
+  var articletitle=document.getElementById('titleSpace').innerHTML;
+  var fileNameToSaveAs = "BACKUP-"+articletitle+".TXT";
+
+  var downloadLink = document.createElement("a");
+  downloadLink.download = fileNameToSaveAs;
+  downloadLink.innerHTML = "Download File";
+  if (window.webkitURL != null) {
+    // Chrome allows the link to be clicked without actually adding it to the DOM.
+    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+  } else {
+    // Firefox requires the link to be added to the DOM before it can be clicked.
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+  }
+
+  downloadLink.click();
 }
 //EOF
