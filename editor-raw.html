@@ -21,7 +21,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<h2>You should consider <a href="#" onclick="document.getElementById('info').style.height='0';">hiding it</a> soon to prevent others from stealing your information.</h2>
 	<p id="authorSpace"></p>
 	<p id="titleSpace"></p>
-	<div id="zoomLevel"></div>
+	<div id="zoomLevel"><style>textarea#writehere { font-size:10pt; }</style></div>
 </div>
 <div class="tab" style="overflow-y:scroll;">
   <button class="tablinks" onclick="showTab(event, 'File')">File</button>
@@ -61,7 +61,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
  <button onclick="document.getElementById('help1').showModal();">Quick Help</button>
 </div>
 <div width="100%" height="75%">
-<textarea id="writehere" style="width:100%; height:75%; font-size:13px; resize:none;" onblur="this.focus();"></textarea>
+<textarea id="writehere" style="width:100%; height:75%; resize:none;" onblur="this.focus();"></textarea>
 </div>
 <!--This is the code for the dialogs.-->
 <!--Be patient.-->
@@ -92,9 +92,10 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="document.getElementById('download').close();">Close</button>
 </dialog>
 <dialog id="zoom">
-	<p>Enter the view text size in pixels (default is 13): 
+	<p>Enter the view text size in points (default is 10): 
 	<input type="number" id="zoom1"></p>
 	<button onclick="zoom()">Apply My Changes</button>
+	<button onclick="document.getElementById('zoom').close();">Close window</button>
 </dialog>
 <dialog id="preview">
 	<div id="preview2"><h1>The preview is still loading. This might not reflect the latest changes.</h1></div>

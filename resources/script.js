@@ -21,18 +21,14 @@ $('textarea').keydown(function(e) {
 
 function PrintElem(elem) {
     var mywindow = window.open('', 'PRINT', 'height=400,width=600');
-
     mywindow.document.write('<html><head><title>Print This Post</title>');
     mywindow.document.write('</head><body >');
     mywindow.document.write(document.getElementById(elem).innerHTML);
     mywindow.document.write('</body></html>');
-
     mywindow.document.close(); // necessary for IE >= 10
     mywindow.focus(); // necessary for IE >= 10*/
-
     mywindow.print();
     mywindow.close();
-
     return true;
 }
 function load_js() {
@@ -165,8 +161,10 @@ function zoom() {
 	// Delete previous zoom level data
 	zoomstyle.innerHTML="";
 	// Set new zoom level
-	zoomstyle.innerHTML='<style>#writehere { font-size: '+zoomlevel+'; } </style>'
-	console.log("SUCCESS: Complete.")
+	console.log("--> Setting zoom level to: "+zoomlevel+'...');
+	zoomstyle.innerHTML='<style>textarea#writehere { font-size: '+zoomlevel+'pt; } </style>';
+	console.log("SUCCESS: Complete.");
+	document.getElementById('zoom').close();
 }
 function preview() {
     console.log("--> Opening preview modal")
