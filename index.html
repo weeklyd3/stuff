@@ -1,35 +1,67 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
-<!--DO NOT DIRECTLY EDIT THIS FILE
-    UNLESS YOU ABSOLUTELY HAVE TO.
-	Editing this file will change
-	the home page.
-	-->
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Weekly D3 - Start Screen</title>
-<link rel="stylesheet" href="/resources/style.css" />
-<noscript><div style="background-color:#000000; color:#00ffff;"><h1>WARNING!!! We noticed that JavaScript is disabled in this browser profile. Until you enable JavaScript, you cannot use this editor anymore.</h1><br><h2>Once JavaScript is enabled, reload this page and this message will disappear.</h2></div></noscript>
-<dialog on id="compatibility">
-	<p>This editor requires:</p>
-	<p>At least:</p>
-	<p> &bull; Chrome 37.0</p>
-	<p> &bull; Microsoft Edge 79.0</p>
-	<p> &bull; Firefox 53 if <code>dom.dialog_element.enabled</code> is set to <code>true</code> in <code>about:config</code></p>
-	<p> &bull; Opera Browser, version 24</p>
-	<p>Safari shouldn't display a dialog, it displays a bunch of text. <br>This is because it doesn't support <br>the HTML used to render the dialog.</p>
-	<p>BOO!!! Internet Explorer cannot view dialogs. BFF with Safari.</p>
-	<p>Press the Esc key to close. Or use this button:</p><br>
-	<button onclick="document.getElementById('compatibility').close();">Close</button>
-</dialog>
-<h2>Welcome</h3>
-<h4>What do you want to do?</h4>
-<p>This website is enemies with Safari because Safari doesn't support the &lt;dialog&gt; element.</p>
-<p>If this is your first time visiting this editor, click "Check Browser Compatibility" first.</p>
-<p><button onclick="window.location.assign('/editor.html');">New Document</button></p>
-<p display="inline"><button onclick="document.getElementById('compatibility').showModal();">Check Browser Compatibility</button></p>
-<p><button onclick="window.location.assign('/readme.txt');">View readme</button></p>
-
-<p id="guidspace">Your Request ID cannot be displayed because your browser does not have JavaScript enabled.</p>
-<style>h2,h4,p { text-align:center; } button { width:100%; height:30px; background-color:rgb(0,255,0); border:1px solid black; user-select:none; -webkit-user-select:none; -o-user-select:none; -moz-user-select:none; -ms-user-select:none; }</style>
-<script>function S4() { return (((1+Math.random())*0x10000)|0).toString(16).substring(1); } guid = ("{"+S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()+"}").toLowerCase(); document.getElementById("guidspace").innerHTML="Request ID: "+guid;</script>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Weekly D3 - Start Screen</title>
+		<link rel="stylesheet" href="/resources/style.css" />
+		<noscript>
+			<div style="width:100%; height:100%; position:fixed; background-color:white;">
+				<p>JavaScript is disabled. Please enable JavaScript and reload the page.</p>
+			</div>
+		</noscript>
+	</head>
+	<body>
+		<div id="menubar">
+			<style>
+				#menubar {
+					height:10%;
+					width:100%;
+					background-color:rgb(0,200,200);
+					font-family:sans-serif;
+					margin:7px;
+					position:sticky;
+					top:7;
+				}
+				button.link {
+					height:100%;
+					background-color:white;
+					border:1px solid black;
+					transition:background-color 0.3s;
+				}
+				button.link:hover {
+					background-color:cyan;
+				}
+				.mainarea {
+					width:100%;
+				}
+				hr {
+					background-color:#a3a3a3;
+					height:1px;
+					border:none;
+				}
+				img {
+					max-width:100%;
+					height:40%;
+				}
+			</style>
+			<button class="link" onclick="window.location.assign('/editor-start.html');">
+				Write New Article
+			</button>
+			<button class="link" disabled="disabled">Read Articles</button>
+		</div>
+		<div class="mainarea" style="height:85%;">
+			<center>
+				<h1>Write an article</h1>
+				<h2>Note: The editor is pretty picky about what browsers work.</h2>
+				<button class="link" style="height:30px;" onclick="window.location.assign('/editor-start.html')">Go!</button><br>
+				<img src="/resources/editor-screenshot.png" title="Screenshot" />
+			</center>
+		</div>
+		<hr>
+		<div class="mainarea" style="height:85%;">
+			<center>
+				<h1>Reading will come soon.</h1>
+			</center>
+		</div>
+	</body>
 </html>
