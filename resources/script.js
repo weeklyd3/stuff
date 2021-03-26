@@ -11,7 +11,7 @@ $('textarea').keydown(function(e) {
     var end = this.selectionEnd;
 
     // set textarea value to: text before caret + tab + text after caret
-    spaces ="    ";
+    spaces ="	";
     this.value = this.value.substring(0, start) + spaces + this.value.substring(end);
 
     // put caret at right position again
@@ -147,14 +147,6 @@ function image() {
     document.getElementById('image2').innerHTML = 'First run completed. Thanks for using this tool!';
     document.getElementById('image').close();
 }
-function download() {
-    document.getElementById('download').showModal();
-    var text2download=document.getElementById('writehere').value;
-    var rawurl="data:text/plain;charset=US-ASCII;base64,"+text2download;
-    var url=rawurl.replace(/\n|\r/g, "<br>");
-    document.getElementById('download2').innerHTML=url;
-    document.getElementById('download1').href=url;
-}
 function zoom() {
     var zoomlevel=document.getElementById('zoom1').value;
     var zoomstyle=document.getElementById('zoomLevel');
@@ -218,10 +210,6 @@ function login() {
         }
     }
 	document.getElementById('writehere').focus();
-}
-function writeSelection(textbefore, textafter) {
-var selectionText = yourTextarea.value.substr(yourTextarea.selectionStart, yourTextarea.selectionEnd);
-yourTextarea.value = textbefore+ selectionText + textafter;
 }
 function download() {
   var textToWrite = document.getElementById('writehere').value;

@@ -1,0 +1,15 @@
+Congrats!
+
+If you can read this text, that
+means that your browser can fetch
+external files. If not, switch
+to a different browser. Chrome
+is the best at this, but it has
+really bad privacy. So it's up
+to you if you which browser 
+you really want to use!
+
+What if it's not loaded?
+Check your internet and try again.
+HOW DID YOU EVEN GET HERE if you
+were not connected?

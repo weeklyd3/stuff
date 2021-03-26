@@ -14,7 +14,7 @@
 		<div id="menubar">
 			<style>
 				#menubar {
-					height:10%;
+					height:10%; /* OF THE SCREEN, CHROME! */
 					width:100%;
 					background-color:rgb(0,200,200);
 					font-family:sans-serif;
@@ -40,8 +40,11 @@
 					border:none;
 				}
 				img {
-					max-width:100%;
-					height:40%;
+					height:30%;
+					width:62.571429%;
+					/* it's 9999 because vt4browsers uses a z-index of 99999 and i want to be below it [probably added by a 5-year-old] */
+					position:relative;
+					z-index:9999;
 				}
 			</style>
 			<button class="link" onclick="window.location.assign('/editor-start.html');">
