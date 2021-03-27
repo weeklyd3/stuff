@@ -103,6 +103,8 @@ There's a way of making a Python file that encloses our website in a Chrome wind
 http://weeklyd3.github.io/resources/client.txt
 (Rename file to client.py after download)
 
+Make sure you have installed pip and python from https://python.org, and then open up your terminal and run these commands:
+
 Run the following code:
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files$ pip install pyinstaller
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files$ cd ../python_files/
