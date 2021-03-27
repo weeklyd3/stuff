@@ -44,6 +44,7 @@ function load_js() {
     document.getElementById('updatedone').showModal();
 }
 function showTab(evt, cityName) {
+	document.getElementById('writehere').focus();
     //Insert blank line for readibility
     console.log("           ");
     // Declare all variables
@@ -193,7 +194,11 @@ function login() {
     console.log("--> Validating user input...")
     if (authorName=="" || articleTitle=="") {
         console.log("FAILURE: Validation error returned.")
-        document.getElementById('login0').innerHTML="Some fields are blank. Not okay.";
+		if (document.getElementById('login0').innerHTML=='Some fields are blank. Not okay.') {
+			document.getElementById('login0').innerHTML="Do you think I'm going to change my mind? Some elements are blank!"
+		} else {
+        	document.getElementById('login0').innerHTML="Some fields are blank. Not okay.";
+		}
     } else {
         console.log("SUCCESS: Validation passed!")
         document.getElementById('login').close();
@@ -232,5 +237,23 @@ function download() {
   }
 
   downloadLink.click();
+}
+function writeSelection(writehere,myValueBefore, myValueAfter) {
+    if (document.selection) {
+        writehere.focus();
+        document.selection.createRange().text = myValueBefore + document.selection.createRange().text + myValueAfter;
+    } else if (writehere.selectionStart || writehere.selectionStart == '0') {
+        var startPos = writehere.selectionStart;
+        var endPos = writehere.selectionEnd;
+        writehere.value = writehere.value.substring(0, startPos)+ myValueBefore+ writehere.value.substring(startPos, endPos)+ myValueAfter+ writehere.value.substring(endPos, writehere.value.length);
+	}
+}
+function font() {
+	var newfont=document.getElementById('fontspace').value;
+	writeSelection(writehere,"<font style='"+'font-family:"'+newfont+'";\'\>',"</font>");
+}
+function fontsize() {
+	var newfontsize=document.getElementById('fontsizespace').value;
+	writeSelection(writehere,"<font style='"+'font-size:'+newfontsize+'pt;\'\>',"</font>");
 }
 //EOF

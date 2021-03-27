@@ -1,0 +1,44 @@
+<!--This is a
+sample article
+used to demonstrate
+the formatting.-->
+<h1>Hello World in Different Languages</h1>
+<pre>
+<strong>Python</strong>
+print("Hello World")
+<strong>C++</strong>
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    cout &lt;&lt;"Hello World";
+}
+<strong>C</strong>
+#include &lt;stdio.h&gt;
+
+int main() {
+   printf("Hello World");
+   return 0;
+}
+<strong>C#</strong>
+namespace HelloWorld
+{
+    class Hello 
+    {         
+        static void Main(string[] args)
+        {
+            System.Console.WriteLine("Hello World");
+        }
+    }
+}
+<strong>JavaScript</strong>
+console.log("Hello World");
+<strong>Batch script & Unix shell</strong>
+echo Hello World
+<strong>Crystal</strong>
+puts "Hello World"
+<strong>Writing</strong>
+█░█ █▀▀ █░░ █░░ █▀█   █░█░█ █▀█ █▀█ █░░ █▀▄
+█▀█ ██▄ █▄▄ █▄▄ █▄█   ▀▄▀▄▀ █▄█ █▀▄ █▄▄ █▄▀
+<strong>Waves</strong>
+ᕼᗴᒪᒪᗢ ᙡᗝᖇᒪᖙ
