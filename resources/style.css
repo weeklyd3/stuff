@@ -128,7 +128,16 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+left {
+	text-align:left;
+}
+center {
+	text-align:center;
+}
+right {
+	display:block;
+	text-align:right;
+}
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;

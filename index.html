@@ -18,9 +18,10 @@
 					width:100%;
 					background-color:rgb(0,200,200);
 					font-family:sans-serif;
-					margin:7px;
+					margin:0px;
 					position:sticky;
-					top:7;
+					display:block;
+					top:0;
 				}
 				button.link {
 					height:100%;
@@ -45,6 +46,9 @@
 					/* it's 9999 because vt4browsers uses a z-index of 99999 and i want to be below it [probably added by a 5-year-old] */
 					position:relative;
 					z-index:9999;
+				}
+				body {
+					margin:0px;
 				}
 			</style>
 			<button class="link" onclick="window.location.assign('/editor-start.html');">

@@ -42,14 +42,14 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 
 <div id="Home" class="tabcontent">
     <button onclick="document.getElementById('login').showModal();" title="Submit login information">Log In</button>
-	<button onclick="document.getElementById('apps').showModal();">Apps</button>
+	<button onclick="document.getElementById('apps').showModal();">Apps</button><button onclick="document.getElementById('fix').showModal();">Fix Text &gt; Encoded HTML</button>&nbsp;&nbsp;
 	<input list="fonts" id="fontspace" type="text" placeholder="Font" onclick="document.getElementById('writehere').blur(); this.focus();"/>
 	<datalist id="fonts">
-		<option value="Times New Roman">
-		<option value="Arial">
-		<option value="Monospace">
+		<option value="Times New Roman" />
+		<option value="Arial" />
+		<option value="Monospace" />
 		<option value="Courier New" />
-		<option value="Calibri">
+		<option value="Calibri" />
 		<option value="Trebuchet MS" />
 	</datalist>
 	<button onclick="font()">Apply font</button>
@@ -71,7 +71,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 		<option value="75" />
 		<option value="100" />
 	</datalist>
-	<button onclick="fontsize()">Apply font size</button>
+	<button onclick="fontsize()">Apply font size</button>&nbsp;&nbsp;
     <button onclick="writeSelection(writehere,'&lt;b&gt;','&lt;/b&gt;');">Bold</button>
 	<button onclick="writeSelection(writehere,'&lt;i&gt;','&lt;/i&gt;')">Italic</button>
 	<button onclick="writeSelection(writehere,'&lt;u&gt;','&lt;/u&gt;')">Underline</button>
@@ -80,7 +80,10 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="writeSelection(writehere,'&lt;h1&gt;','&lt;/h1&gt;')">Heading 1</button>
 	<button onclick="writeSelection(writehere,'&lt;h2&gt;','&lt;/h2&gt;')">Heading 2</button>
 	<button onclick="writeSelection(writehere,'&lt;h3&gt;','&lt;/h3&gt;')">Heading 3</button>
-	<button onclick="writeSelection(writehere,'&lt;h4&gt;','&lt;/h4&gt;')">Heading 4</button>
+	<button onclick="writeSelection(writehere,'&lt;h4&gt;','&lt;/h4&gt;')">Heading 4</button>&nbsp;&nbsp;
+	<button onclick="writeSelection(writehere,'&lt;left&gt;','&lt;/left&gt;')">Left Align</button>
+	<button onclick="writeSelection(writehere,'&lt;center&gt;','&lt;/center&gt;')">Center Align</button>
+	<button onclick="writeSelection(writehere,'&lt;right&gt;','&lt;/right&gt;')">Right Align</button>
 </div>
 
 <div id="Insert" class="tabcontent">
@@ -122,12 +125,6 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="image()">Finish</button>
 	<br><p id="image2">Insert the data and click Finish.</p><br>
 	<button onclick="document.getElementById('image').close();">Close</button>
-</dialog>
-<dialog id="download">
-	<p>Click the link below to download your article.</p>
-	<a href="#" download id="download1">Generate the File to Download</a>
-	<textarea id="download2" style="width:100%;"></textarea>
-	<button onclick="document.getElementById('download').close();">Close</button>
 </dialog>
 <dialog id="zoom">
 	<p>Enter the view text size in points (default is 10): 
@@ -214,6 +211,24 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<textarea rows="5" id="quote2" style="width:100%;" placeholder="John Doe"></textarea>
 	<button onclick="quote()">Finish</button><br><button onclick="document.getElementById('quote').close();">Cancel</button>
 </dialog>
+<dialog id="fix">
+	<h1>Fix Text &gt; HTML</h1>
+	<p>This procedure will:</p>
+	<ul>
+		<li>&lt; with &amp;lt;</li>
+		<li>&gt; with &amp;gt;</li>
+		<li>&amp; with &amp;amp;</li>
+	</ul>
+	<p>Are you sure you want to continue?</p>
+	<button onclick="fix(writehere)" style="background-color:#00ff00;">Continue</button>
+	<button onclick="document.getElementById('fix').close();">Cancel</button>
+</dialog>
+<dialog id="download">
+	<h1>Downloading file...</h1>
+	<p>Press the Esc key to close this dialog if the download already started.</p>
+	<p>If it didn't start, make sure your pop-up blocker is disabled on this website.</p>
+	<p>If you get a 404 error, remove everything before "blob:" in the URL and hit Ctrl+S to save the file.</p>
+	<button onclick="document.getElementById('download').close();">OK</button>
 <!--TA-DA! THE JAVASCRIPT!-->
 <script src="/resources/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>

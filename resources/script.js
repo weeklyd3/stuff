@@ -217,6 +217,7 @@ function login() {
 	document.getElementById('writehere').focus();
 }
 function download() {
+  document.getElementById('download').showModal();
   var textToWrite = document.getElementById('writehere').value;
   var textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
   var articletitle=document.getElementById('titleSpace').innerHTML;
@@ -255,5 +256,18 @@ function font() {
 function fontsize() {
 	var newfontsize=document.getElementById('fontsizespace').value;
 	writeSelection(writehere,"<font style='"+'font-size:'+newfontsize+'pt;\'\>',"</font>");
+}
+function fix(textArea) {
+	console.log('--> Fix starting...')
+	var text=textArea.value;
+	indexStart=textArea.selectionStart;
+	var indexEnd=textArea.selectionEnd;
+	var selection=text.substring(indexStart, indexEnd);
+	var newselection=selection.replace(/&/g, "&amp;");
+	var othernewselection=newselection.replace(/>/g, "&gt;")
+	var otherothernewselection=othernewselection.replace(/</g,'&lt;')
+	insertAtCursor(writehere, otherothernewselection);
+	console.log("SUCCESS: Fix completed!")
+	document.getElementById('fix').close();
 }
 //EOF
