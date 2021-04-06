@@ -1,0 +1,15 @@
+----------------------
+DATA COLLECTION POLICY
+----------------------
+This document shows the
+data we collect and why
+we do so.
+ ● The name and article
+   title is collected. 
+   This is used solely
+   to categorize the
+   posts, and is only
+   stored on the web
+   page. Unless you
+   post, it is stored
+   in local storage.

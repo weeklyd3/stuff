@@ -1,7 +1,7 @@
 <head>
     <title>Debug Page -- For Developers ONLY!</title>
-	<link rel="stylesheet" href="/resources/style.css" />
-<link rel="stylesheet" href="/resources/editor-style.css" />
+	<link rel="stylesheet" href="resources/style.css" />
+<link rel="stylesheet" href="resources/editor-style.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();">
@@ -11,8 +11,8 @@
 This means that JavaScript is disabled in your browser. Please enable JavaScript, purge the cache, reload the page, and try again.<br>
 WARNING: Please do not delete this message with your Developer Tools. If you are at the main interface, nothing will work.</code></noscript>
 		<div style="text-align:center;">
-			<img src="/resources/loading.gif"><br><span>Please wait...</span><br>
-			<a href="/resources/sample-file.txt" target="_blank">Having problems? See if your browser can display this file</a>
+			<img src="resources/loading.gif"><br><span id="load1">Please wait...</span><br>
+			<a href="resources/sample-file.txt" target="_blank">Having problems? See if your browser can display this file</a>
 		</div>
 	</div>
 <!--Hidden information panel (for storing input information)
@@ -20,9 +20,9 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 <div id="info" style="height:0; overflow:scroll;">
 	<h1>Ha! Looks like you hacked the information panel and set its width to something greater than 0.</h1>
 	<h2>You should consider <a href="#" onclick="document.getElementById('info').style.height='0';">hiding it</a> soon to prevent others from stealing your information.</h2>
-	<p id="authorSpace"></p>
-	<p id="titleSpace"></p>
-	<div id="zoomLevel"><style>textarea#writehere { font-size:10pt; }</style></div>
+	<p id="authorSpace">[not set]</p>
+	<p id="titleSpace">[not set]</p>
+		<div id="zoomLevel"><style>button { font-size:10pt; }</style></div>
 </div>
 <div class="tab" style="overflow-y:scroll;">
   <button class="tablinks" onclick="showTab(event, 'File')">File</button>
@@ -33,7 +33,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </div>
 <div height="10%">
 <div id="File" class="tabcontent">
-  <button onclick="download()" title="Download file for backup purposes">Download</button>
+  <button onclick="document.getElementById('download').showModal();" title="Download file for backup purposes">Download</button>
   <button onclick="preview()" title="Preview post">Preview</button>
   <button onclick="document.getElementById('info').style.height='25%';">Reveal information panel (Advanced)</button>
   <button title="Quit the editor and start it again" onclick="document.getElementById('quit').showModal();">Quit and restart</button>
@@ -42,15 +42,17 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 
 <div id="Home" class="tabcontent">
     <button onclick="document.getElementById('login').showModal();" title="Submit login information">Log In</button>
-	<button onclick="document.getElementById('apps').showModal();">Apps</button><button onclick="document.getElementById('fix').showModal();">Fix Text &gt; Encoded HTML</button>&nbsp;&nbsp;
+	<button onclick="document.getElementById('apps').showModal();">Apps</button>
 	<input list="fonts" id="fontspace" type="text" placeholder="Font" onclick="document.getElementById('writehere').blur(); this.focus();"/>
 	<datalist id="fonts">
 		<option value="Times New Roman" />
 		<option value="Arial" />
-		<option value="Monospace" />
 		<option value="Courier New" />
 		<option value="Calibri" />
+		<option value="Consolas" />
+		<option value="Lucida Console" />
 		<option value="Trebuchet MS" />
+		<option value="Standard" />
 	</datalist>
 	<button onclick="font()">Apply font</button>
 	<input list="fontsizes" id="fontsizespace" type="number" placeholder="Font Size" min="1" max="16777216" />
@@ -65,6 +67,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 		<option value="12" />
 		<option value="14" />
 		<option value="16" />
+		<option value="18" />
 		<option value="20" />
 		<option value="30" />
 		<option value="50" />
@@ -72,7 +75,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 		<option value="100" />
 	</datalist>
 	<button onclick="fontsize()">Apply font size</button>&nbsp;&nbsp;
-    <button onclick="writeSelection(writehere,'&lt;b&gt;','&lt;/b&gt;');">Bold</button>
+    <button onclick="bold(); /*writeSelection(writehere,'&lt;b&gt;','&lt;/b&gt;');*/">Bold</button>
 	<button onclick="writeSelection(writehere,'&lt;i&gt;','&lt;/i&gt;')">Italic</button>
 	<button onclick="writeSelection(writehere,'&lt;u&gt;','&lt;/u&gt;')">Underline</button>
 	<button onclick="writeSelection(writehere,'&lt;sub&gt;','&lt;/sub&gt;')">Subscript</button>
@@ -83,7 +86,9 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="writeSelection(writehere,'&lt;h4&gt;','&lt;/h4&gt;')">Heading 4</button>&nbsp;&nbsp;
 	<button onclick="writeSelection(writehere,'&lt;left&gt;','&lt;/left&gt;')">Left Align</button>
 	<button onclick="writeSelection(writehere,'&lt;center&gt;','&lt;/center&gt;')">Center Align</button>
-	<button onclick="writeSelection(writehere,'&lt;right&gt;','&lt;/right&gt;')">Right Align</button>
+	<button onclick="writeSelection(writehere,'&lt;right&gt;','&lt;/right&gt;')">Right Align</button>&nbsp;&nbsp;
+	<input type="number" min="0.5" max="1058576" id="lhspace" placeholder="Line height" step="0.5" />
+	<button onclick="lineheight()">Apply line height</button>
 </div>
 
 <div id="Insert" class="tabcontent">
@@ -102,7 +107,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
  <button onclick="document.getElementById('help1').showModal();">Quick Help</button>
 </div>
 <div width="100%" height="75%">
-<textarea id="writehere" style="width:100%; height:75%; resize:none;"></textarea>
+<iframe id="writehere" style="border:1px solid black;" frameBorder=1 src="write.html" width=100% height=75%></iframe>
 </div>
 <!--This is the code for the dialogs.-->
 <!--Be patient.-->
@@ -114,7 +119,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </dialog>
 <dialog id="image">
 	<p>Enter the image URL. (Use a direct link like "http://example.com/file.png".)<br>
-	<input type="url" style="width:100%;" id="image1" value="https://weeklyd3.github.io/resources/sample-image.png">
+	<input type="url" style="width:100%;" id="image1" value="https://weeklyd3.github.ioresources/sample-image.png">
 	</p>
     <p>[OPTIONAL] Enter the alt text. This text will be displayed if the image is unavailable.
     <input type="text" style="width:100%;" id="image2" value="" />
@@ -127,6 +132,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="document.getElementById('image').close();">Close</button>
 </dialog>
 <dialog id="zoom">
+	<strong>WARNING⚠: Zoom level might make text on buttons unreadable and will not affect document font size!</strong> 
 	<p>Enter the view text size in points (default is 10): 
 	<input type="number" id="zoom1"></p>
 	<button onclick="zoom()">Apply My Changes</button>
@@ -134,8 +140,8 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </dialog>
 <dialog id="preview">
 	<div id="preview2"><h1>The preview is still loading. This might not reflect the latest changes.</h1></div>
-	<div style="position:sticky; top:0;"><h1 id="preview0" style="color:#00ffff;background-color:#000000;">Here's a preview of your post.&nbsp;</h1><button onclick="document.getElementById('preview').close();">Close</button><button onclick="PrintElem('preview1')">Print</button></div>
-	<div id="preview1" width="50%" height="50%" style="overflow-y:scroll; overflow-x:auto; border:1px solid black; word-wrap:break-word; white-space: pre-wrap;"><img src="/resources/loading.gif"> Loading preview...</div>
+	<div style="position:sticky; top:0;"><h1 id="preview0" style="color:#00ffff;background-color:#000000;">Here's a preview of your post.&nbsp;</h1><button onclick="document.getElementById('preview').close();">Close</button><button onclick="ifrm.print();">Print</button></div>
+	<div id="preview1" width="50%" height="50%" style="overflow-y:scroll; overflow-x:auto; border:1px solid black; word-wrap:break-word; white-space: pre-wrap;"><img src="resources/loading.gif"> Loading preview...</div>
 </dialog>
 <dialog id="quit">
 	<h1>Quit editor and start fresh?</h1>
@@ -224,12 +230,16 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="document.getElementById('fix').close();">Cancel</button>
 </dialog>
 <dialog id="download">
-	<h1>Downloading file...</h1>
-	<p>Press the Esc key to close this dialog if the download already started.</p>
-	<p>If it didn't start, make sure your pop-up blocker is disabled on this website.</p>
-	<p>If you get a 404 error, remove everything before "blob:" in the URL and hit Ctrl+S to save the file.</p>
-	<button onclick="document.getElementById('download').close();">OK</button>
+	<span>Enter the filename to save as. html extension is added automatically.</span>
+	<input id="filename" type="text" placeholder="My Article" /><br>	<details>
+		<summary>Having trouble? See these tips</summary>
+		<p>Press the Esc key to close this dialog if the download already started.</p>
+		<p>If it didn't start, make sure your pop-up blocker is disabled on this website.</p>
+		<p>If you get a 404 error, remove everything before "blob:" in the URL and hit Ctrl+S to save the file.</p>
+	</details>
+	<button onclick="download()" style="background-color:#00ff00;">Save</button>
+	<button onclick="document.getElementById('download').close();">Cancel</button>
 <!--TA-DA! THE JAVASCRIPT!-->
-<script src="/resources/jquery.min.js"></script>
+<script src="resources/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-<script src="/resources/script.js"></script>
+<script src="resources/script.js"></script>

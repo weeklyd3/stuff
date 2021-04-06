@@ -20,6 +20,4 @@ textarea {
 button:hover {
 	background-color:#00ffff;
 }
-h1,p,li {
-        font-family: "Times New Roman"; 
-}
+h1,p,li { font-family: "Times New Roman"; }

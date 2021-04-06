@@ -2,22 +2,20 @@
 *** download [fixed on 3/22/2021]
 *** Font size (view) [fixed on 3/22/2021]
 */
-$('textarea').keydown(function(e) {
-  var keyCode = e.keyCode || e.which;
+// Access content in iframe
+var ifrm = document.getElementById('writehere');
+ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+function getEmbedSelection(iframe) {
+  var win = iframe.contentWindow;
+  var doc = iframe.contentDocument || win.document;
 
-  if (keyCode === 9) {
-    e.preventDefault();
-    var start = this.selectionStart;
-    var end = this.selectionEnd;
-
-    // set textarea value to: text before caret + tab + text after caret
-    spaces ="	";
-    this.value = this.value.substring(0, start) + spaces + this.value.substring(end);
-
-    // put caret at right position again
-    this.selectionStart = this.selectionEnd = start + spaces.length;
+  if (win.getSelection) {
+    return win.getSelection().toString();
+  } else if (doc.selection && doc.selection.createRange) {
+    return doc.selection.createRange().text;
   }
-});
+}
+
 
 function PrintElem(elem) {
     var mywindow = window.open('', 'PRINT', 'height=400,width=600');
@@ -44,7 +42,6 @@ function load_js() {
     document.getElementById('updatedone').showModal();
 }
 function showTab(evt, cityName) {
-	document.getElementById('writehere').focus();
     //Insert blank line for readibility
     console.log("           ");
     // Declare all variables
@@ -97,6 +94,9 @@ console.log("LOADED: script.js");
 console.log("LOADED: editor-raw.html");
 console.log("LOADED: style.css");
 console.log("LOADED: editor-style.css");
+setTimeout(function() {
+	document.getElementById('load1').innerHTML="Check your internet connection. This is taking longer than it should..."
+},5000);
 console.log("Loading login overlay...");
 console.log("Opening 'Home' tab...")
 showTab(event, 'Home');
@@ -124,8 +124,8 @@ function insertAtCursor(dummy, myValue) {
             + dummy.value.substring(endPos, dummy.value.length);
     } else {
         dummy.value += myValue;
-    }
-    console.log('SUCCESS: Inserted text "'+myValue+'" at cursor!')
+	}
+    console.log('SUCCESS: Inserted text "'+myValue+'" at cursor!') 
 }
 function hyperlink() {
     console.log("--> Collecting user input...")
@@ -155,7 +155,7 @@ function zoom() {
 	zoomstyle.innerHTML="";
 	// Set new zoom level
 	console.log("--> Setting zoom level to: "+zoomlevel+'...');
-	zoomstyle.innerHTML='<style>textarea#writehere { font-size: '+zoomlevel+'pt; } </style>';
+	zoomstyle.innerHTML='<style>button { font-size: '+zoomlevel+'pt; } </style>';
 	console.log("SUCCESS: Complete.");
 	document.getElementById('zoom').close();
 }
@@ -165,7 +165,7 @@ function preview() {
     console.log("--> Collecting user input...")
     var authorname=document.getElementById('authorSpace').innerHTML;
     var articletitle=document.getElementById('titleSpace').innerHTML;
-    var rawtext=document.getElementById('writehere').value;
+    var rawtext=ifrm.document.getElementById('writehere').innerHTML;
     var goodtext1='<pre id="AAAAAAAAAA">'+rawtext+'</pre>';
     document.getElementById('preview1').innerHTML=goodtext1;
     document.getElementById('preview0').innerHTML='Here\'\s a preview of your post, "'+articletitle+'" by '+authorname+'.';
@@ -190,7 +190,8 @@ function login() {
     var articleTitle=document.getElementById('login2').value;
     //Store some info in the information panel
     document.getElementById('authorSpace').innerHTML=authorName;
-    document.getElementById('titleSpace').innerHTML=articleTitle;
+    fix("authorSpace",authorName);
+	fix("titleSpace",articleTitle);
     console.log("--> Validating user input...")
     if (authorName=="" || articleTitle=="") {
         console.log("FAILURE: Validation error returned.")
@@ -217,12 +218,13 @@ function login() {
 	document.getElementById('writehere').focus();
 }
 function download() {
-  document.getElementById('download').showModal();
-  var textToWrite = document.getElementById('writehere').value;
+  var textToWrite = ifrm.document.getElementById('writehere').innerHTML;
   var textFileAsBlob = new Blob([ textToWrite ], { type: 'text/plain' });
   var articletitle=document.getElementById('titleSpace').innerHTML;
-  var fileNameToSaveAs = "BACKUP-"+articletitle+".TXT";
-
+  var fileNameToSaveAs = document.getElementById('filename').value+".html";
+  if (fileNameToSaveAs===".html") {
+	  fileNameToSaveAs="Untitled.html";
+  }
   var downloadLink = document.createElement("a");
   downloadLink.download = fileNameToSaveAs;
   downloadLink.innerHTML = "Download File";
@@ -238,6 +240,7 @@ function download() {
   }
 
   downloadLink.click();
+  document.getElementById('download').close();
 }
 function writeSelection(writehere,myValueBefore, myValueAfter) {
     if (document.selection) {
@@ -251,23 +254,49 @@ function writeSelection(writehere,myValueBefore, myValueAfter) {
 }
 function font() {
 	var newfont=document.getElementById('fontspace').value;
-	writeSelection(writehere,"<font style='"+'font-family:"'+newfont+'";\'\>',"</font>");
+	var range = ifrm.getSelection().getRangeAt(0);
+	var selectionContents = range.extractContents();
+	var div = document.createElement("span");
+	div.style.fontFamily=newfont;
+	div.appendChild(selectionContents);
+	range.insertNode(div);
 }
 function fontsize() {
 	var newfontsize=document.getElementById('fontsizespace').value;
-	writeSelection(writehere,"<font style='"+'font-size:'+newfontsize+'pt;\'\>',"</font>");
+	var range = ifrm.getSelection().getRangeAt(0);
+	var selectionContents = range.extractContents();
+	var div = document.createElement("span");
+	div.style.fontSize=newfontsize+"pt";
+	div.appendChild(selectionContents);
+	range.insertNode(div);
 }
-function fix(textArea) {
+function fix(place,text) {
+	// Excuse my terrible variable names.
 	console.log('--> Fix starting...')
-	var text=textArea.value;
-	indexStart=textArea.selectionStart;
-	var indexEnd=textArea.selectionEnd;
-	var selection=text.substring(indexStart, indexEnd);
-	var newselection=selection.replace(/&/g, "&amp;");
+	var newselection=text.replace(/&/g, "&amp;");
 	var othernewselection=newselection.replace(/>/g, "&gt;")
 	var otherothernewselection=othernewselection.replace(/</g,'&lt;')
-	insertAtCursor(writehere, otherothernewselection);
+	text=otherothernewselection;
+	document.getElementById(place).innerHTML=text;
 	console.log("SUCCESS: Fix completed!")
-	document.getElementById('fix').close();
+}
+function lineheight() {
+	var newlh=document.getElementById('lhspace').value;
+	var range = ifrm.getSelection().getRangeAt(0);
+	var selectionContents = range.extractContents();
+	var div = document.createElement("span");
+	div.style.lineHeight=newlh;
+	div.appendChild(selectionContents);
+	range.insertNode(div);
+}
+/*Formatting functions
+----------------------------------------------------*/
+function bold() {
+	var range = ifrm.getSelection().getRangeAt(0);
+	var selectionContents = range.extractContents();
+	var div = document.createElement("span");
+	div.style.fontWeight="bold";
+	div.appendChild(selectionContents);
+	range.insertNode(div);
 }
 //EOF
