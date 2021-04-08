@@ -16,99 +16,6 @@ function getEmbedSelection(iframe) {
   }
 }
 
-$(function() { 
-	var enabled = true;
-	$("textarea").keydown(function(e) {
-
-		// Escape key toggles tab on/off
-		if (e.keyCode==27) {
-			enabled = !enabled;
-			return false;
-		}
-		// Enter Key?
-		if (e.keyCode === 13 && enabled) {
-			// selection?
-			if (this.selectionStart == this.selectionEnd) {
-				// find start of the current line
-				var sel = this.selectionStart;
-				var text = $(this).val();
-				while (sel > 0 && text[sel-1] != '\n')
-				sel--;
-
-				var lineStart = sel;
-				while (text[sel] == ' ' || text[sel]=='\t')
-				sel++;
-
-				if (sel > lineStart) {
-					// Insert carriage return and indented text
-					document.execCommand('insertText', false, "\n" + text.substr(lineStart, sel-lineStart));
-
-					// Scroll caret visible
-					this.blur();
-					this.focus();
-					return false;
-				}
-			}
-		}
-
-		// Tab key?
-		if(e.keyCode === 9 && enabled) {
-			// selection?
-			if (this.selectionStart == this.selectionEnd) {
-				// These single character operations are undoable
-				if (!e.shiftKey) {
-					document.execCommand('insertText', false, "\t");
-				} else {
-					var text = this.value;
-					if (this.selectionStart > 0 && text[this.selectionStart-1]=='\t') {
-						document.execCommand('delete');
-					}
-				}
-			} else {
-				// Block indent/unindent trashes undo stack.
-				// Select whole lines
-				var selStart = this.selectionStart;
-				var selEnd = this.selectionEnd;
-				var text = $(this).val();
-				while (selStart > 0 && text[selStart-1] != '\n')
-					selStart--;
-				while (selEnd > 0 && text[selEnd-1]!='\n' && selEnd < text.length)
-					selEnd++;
-
-				// Get selected text
-				var lines = text.substr(selStart, selEnd - selStart).split('\n');
-
-				// Insert tabs
-				for (var i=0; i<lines.length; i++) {
-					// Don't indent last line if cursor at start of line
-					if (i==lines.length-1 && lines[i].length==0)
-						continue;
-
-					// Tab or Shift+Tab?
-					if (e.shiftKey) {
-						if (lines[i].startsWith('\t'))
-							lines[i] = lines[i].substr(1);
-						else if (lines[i].startsWith("    "))
-							lines[i] = lines[i].substr(4);
-					}
-					else
-						lines[i] = "\t" + lines[i];
-				}
-				lines = lines.join('\n');
-
-				// Update the text area
-				this.value = text.substr(0, selStart) + lines + text.substr(selEnd);
-				this.selectionStart = selStart;
-				this.selectionEnd = selStart + lines.length; 
-			}
-
-			return false;
-		}
-
-		enabled = true;
-		return true;
-	});
-});
 
 function PrintElem(elem) {
     var mywindow = window.open('', 'PRINT', 'height=400,width=600');
@@ -171,11 +78,11 @@ function showTab(evt, cityName) {
 //Execute when page loads
 //Kinda like autoexec.bat on MS-DOS, but worse.
 /*
-┌────────────────────────────────────────────────────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 | LOCATION: My Computer >> Devices >> Disks >> C:                  --> X |
-│ Name             | Type               | Description                    │
-│ autoexec.bat     | Windows Batch File | Execute lines at startup.      |
-└────────────────────────────────────────────────────────────────────────┘
+â”‚ Name             | Type               | Description                    â”‚
+â”‚ autoexec.bat     | Windows Batch File | Execute lines at startup.      |
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 */
 console.log("Resource Loader is initializing...");
 console.log("Initializing editor...");
@@ -183,6 +90,12 @@ var authorName;
 var articleTitle;
 console.log("Contacting server...");
 console.log("Downloading and loading files...");
+(function() {
+	if (screen.height<=480 || screen.width<=640) {
+		document.getElementById('smallscreen').showModal();
+		console.log("user's screen is very small.")
+	}
+})();
 console.log("LOADED: script.js");
 console.log("LOADED: editor-raw.html");
 console.log("LOADED: style.css");
@@ -201,24 +114,10 @@ console.log("Finished loading essential files.");
 ** EXPERIMENTAL FEATURES: Use at own risk.
 **
 */
-function insertAtCursor(dummy, myValue) {
-    //IE support
-    if (document.selection) {
-        dummy.focus();
-        sel = document.selection.createRange();
-        sel.text = myValue;
-    }
-    //MOZILLA and others
-    else if (dummy.selectionStart || dummy.selectionStart == '0') {
-        var startPos = dummy.selectionStart;
-        var endPos = dummy.selectionEnd;
-        dummy.value = dummy.value.substring(0, startPos)
-            + myValue
-            + dummy.value.substring(endPos, dummy.value.length);
-    } else {
-        dummy.value += myValue;
-	}
-    console.log('SUCCESS: Inserted text "'+myValue+'" at cursor!') 
+function insertAtCursor(writehere,text) {
+	document.getElementById('writehere').contentDocument.designMode = "on";
+	document.getElementById('writehere').contentWindow.document.execCommand('insertHTML', false, text);
+	console.log("SUCCESS: Inserted text "+text+" at cursor!")
 }
 function hyperlink() {
     console.log("--> Collecting user input...")
@@ -271,8 +170,8 @@ function quote() {
     var speaker=document.getElementById('quote2').value;
     //For Windows (CR LF)
     //CR=\r=carriage return
-    //LF=\n=line fall
-    insertAtCursor(writehere,"<blockquote>"+quotedtext+"\r\n"+"− "+speaker+"</blockquote>");
+    //LF=\n=line feed
+    insertAtCursor(writehere,"<blockquote>"+quotedtext+"\r\n"+"âˆ’ "+speaker+"</blockquote>");
     document.getElementById('quote').close();
 }
 function login() {
@@ -286,9 +185,9 @@ function login() {
     fix("authorSpace",authorName);
 	fix("titleSpace",articleTitle);
     console.log("--> Validating user input...")
-    if (authorName=="" || articleTitle=="") {
+    if (authorName==="" || articleTitle==="") {
         console.log("FAILURE: Validation error returned.")
-		if (document.getElementById('login0').innerHTML=='Some fields are blank. Not okay.') {
+		if (document.getElementById('login0').innerHTML==='Some fields are blank. Not okay.') {
 			document.getElementById('login0').innerHTML="Do you think I'm going to change my mind? Some elements are blank!"
 		} else {
         	document.getElementById('login0').innerHTML="Some fields are blank. Not okay.";
@@ -296,10 +195,10 @@ function login() {
     } else {
         console.log("SUCCESS: Validation passed!")
         document.getElementById('login').close();
-        if (authorName=='Administrator') {
+        if (authorName==='Administrator') {
             document.getElementById('login0').innerHTML="Enter the administrator password to complete login."
             adminpass=prompt("Enter the administrator password:")
-            if (adminpass=="timothy") {
+            if (adminpass==="timothy") {
                 alert("You are now logged in as Administrator.")
             } else {
                 alert("Wrong password, please try again.");
@@ -339,7 +238,7 @@ function writeSelection(writehere,myValueBefore, myValueAfter) {
     if (document.selection) {
         writehere.focus();
         document.selection.createRange().text = myValueBefore + document.selection.createRange().text + myValueAfter;
-    } else if (writehere.selectionStart || writehere.selectionStart == '0') {
+    } else if (writehere.selectionStart || writehere.selectionStart === '0') {
         var startPos = writehere.selectionStart;
         var endPos = writehere.selectionEnd;
         writehere.value = writehere.value.substring(0, startPos)+ myValueBefore+ writehere.value.substring(startPos, endPos)+ myValueAfter+ writehere.value.substring(endPos, writehere.value.length);
@@ -391,5 +290,16 @@ function bold() {
 	div.style.fontWeight="bold";
 	div.appendChild(selectionContents);
 	range.insertNode(div);
+}
+function startspeak() {
+	var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+	recognition.lang = 'en-US';
+	recognition.interimResults = false;
+	recognition.maxAlternatives = 5;
+	recognition.start();
+
+	recognition.onresult = function(event) {
+		console.log('You said: ', event.results[0][0].transcript);
+	};
 }
 //EOF
