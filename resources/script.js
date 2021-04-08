@@ -15,7 +15,12 @@ function getEmbedSelection(iframe) {
     return doc.selection.createRange().text;
   }
 }
-
+function dizzy() {
+	console.log('You are scrolling. I am DIZZY.')
+}
+document.onscroll=function() {
+	dizzy();
+};
 
 function PrintElem(elem) {
     var mywindow = window.open('', 'PRINT', 'height=400,width=600');
@@ -78,11 +83,11 @@ function showTab(evt, cityName) {
 //Execute when page loads
 //Kinda like autoexec.bat on MS-DOS, but worse.
 /*
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+┌────────────────────────────────────────────────────────────────────────┐
 | LOCATION: My Computer >> Devices >> Disks >> C:                  --> X |
-â”‚ Name             | Type               | Description                    â”‚
-â”‚ autoexec.bat     | Windows Batch File | Execute lines at startup.      |
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+│ Name             | Type               | Description                    │
+│ autoexec.bat     | Windows Batch File | Execute lines at startup.      |
+└────────────────────────────────────────────────────────────────────────┘
 */
 console.log("Resource Loader is initializing...");
 console.log("Initializing editor...");
@@ -171,7 +176,7 @@ function quote() {
     //For Windows (CR LF)
     //CR=\r=carriage return
     //LF=\n=line feed
-    insertAtCursor(writehere,"<blockquote>"+quotedtext+"\r\n"+"âˆ’ "+speaker+"</blockquote>");
+    insertAtCursor(writehere,"<blockquote>"+quotedtext+"\r\n"+"− "+speaker+"</blockquote>");
     document.getElementById('quote').close();
 }
 function login() {
@@ -183,7 +188,7 @@ function login() {
     //Store some info in the information panel
     document.getElementById('authorSpace').innerHTML=authorName;
     fix("authorSpace",authorName);
-	fix("titleSpace",articleTitle);
+    fix("titleSpace",articleTitle);
     console.log("--> Validating user input...")
     if (authorName==="" || articleTitle==="") {
         console.log("FAILURE: Validation error returned.")
