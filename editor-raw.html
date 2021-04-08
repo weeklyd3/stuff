@@ -150,9 +150,10 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<span>&nbsp;&nbsp;</span>
 	<button onclick="location.reload();" style="color:white; background-color:red;">Exit</button>
 </dialog>
-<dialog id="help" style="width:50%; height:50%;">
+<dialog id="help" style="width:50%; height:60%;">
 	<iframe src="https://help.weeklyd3.repl.co" frameBorder=1 width=95% height=87%>Your browser does not support &lt;iframe&gt;s.</iframe>
-	<button style="width:100%; position:sticky; bottom:0; height:35px !important;" onclick="document.getElementById('help').close();">Close Help Dialog</button>
+	<a style="display:block; height:10%;" href="https://github.com/weeklyd3/weeklyd3.github.io/discussions/8" target="_blank">Help discussions</a>
+	<button style="width:100%; position:sticky; bottom:0; min-height:35px; height:4%;" onclick="document.getElementById('help').close();">Close Help Dialog</button>
 </dialog>
 <dialog id="help1">
 	<h1>Article Numbers</h1>
@@ -207,7 +208,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
     <button style="background-color:#00ff00; color:#00000;" onclick="document.getElementById('updatedone').close();">Finish</button>
 </dialog>
 <dialog id="apps" style="width:95%; height:95%;">
-	<div style="height:90%; width:95%;"><iframe src="/apps" width=100% height=100% ></iframe></div>
+	<div style="height:90%; width:95%;"><iframe src="https://weeklyd3.github.io/apps" width=100% height=100% ></iframe></div>
 	<div style="width:90%; height:10%;"><button height="100%" width="100%" onclick="document.getElementById('apps').close();">Minimize</button></div>
 </dialog>
 <dialog id="quote">
@@ -239,6 +240,11 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	</details>
 	<button onclick="download()" style="background-color:#00ff00;">Save</button>
 	<button onclick="document.getElementById('download').close();">Cancel</button>
+</dialog>
+<dialog id="smallscreen">
+	<h1>Warning</h1>
+	<p>Some elements might not fit in this view because your screen resolution is 640&times;480 or lower. Please increase your screen resolution or use a different monitor. Or if you really want to continue:</p>
+	<button onclick="this.parentNode.close();">Continue</button>
 <!--TA-DA! THE JAVASCRIPT!-->
 <script src="resources/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>

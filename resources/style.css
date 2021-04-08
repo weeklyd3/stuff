@@ -142,3 +142,7 @@ right {
 input[type=number] {
   -moz-appearance: textfield;
 }
+/* help dialog */
+iframe {
+	border:1px solid black;
+}
