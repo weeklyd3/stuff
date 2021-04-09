@@ -13,3 +13,8 @@ we do so.
    page. Unless you
    post, it is stored
    in local storage.
+ ● Images inserted into
+   the article are
+   converted into data
+   URIs, and do not
+   contain metadata.
