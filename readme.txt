@@ -14,6 +14,13 @@ IV. Protections Against Spam
   3. Keep watch!
 V. Client App
 --------
+┌──────────────────────────────────────────────────────────┐
+│ NOTE:                                                    │
+│ This file contains box-drawing characters that might not |
+│ display well in some operating systems or browsers. If   |
+│ you see boxes or Euro symbols at the top of this box,    |
+│ then your browser is using another encoding.             |
+└──────────────────────────────────────────────────────────┘
 I. About
 1. Preamble
 This is the main repository for the Weekly D3 website. You can start pull requests or edit the code directly. For more information, see How to Contribute.
@@ -48,11 +55,32 @@ This helps hackers hack into a site and steal private files (e.g. logs of sign-i
 III. How to Contribute
 Run the following code at the prompt to clone the repo:
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files$ git clone https://github.com/weeklyd3/weeklyd3.github.io weeklyd3
+AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files$ cd weeklyd3
+AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files/weeklyd3$ git init
+AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files/weeklyd3$ echo All set!
+All set!
 Run into any errors? Try this:
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files$ su -
 Password:
 AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files# git clone https://github.com/weeklyd3/weeklyd3.github.io weeklyd3
 It should be able to complete as root.
+
+So now, you've done some really nice edits...but only on your machine. You need to also run this to push the changes to GitHub:
+[CD to the project directory]
+AAAA.AAAA@BARF-AAAAAAAAAA:/home/AAAA.AAAA/github_files/weeklyd3$ git push
+Even!
+
+Then, go online to https://github.com/weeklyd3/weeklyd3.github.io . You'll see something like this:
+
+MYACCOUNT                        √ Update script.js (abc123) (history)
+
+If you see √ next to the commit summary, then the website has been republished. If you still don't see the changes, try clearing the cache.
+Sometimes, the check mark √ isn't always there immediately. Sometimes, you'll see a yellow dot, meaning that checks are still being run. To fix this, just wait around 3 minutes. It can sometimes take up to 4 minutes to run. After that, you'll either see the check mark √ or still the yellow dot, meaning that the checks are taking really long to publish. Just wait!
+
+┌──────────────────────────────────────────────────────────┐
+│ NOTE:                                                    │
+│ CodeQL Analysis (Python) takes the longest to run.       |
+└──────────────────────────────────────────────────────────┘
 
 IV. Protections Against Spam
 1. Preamble
