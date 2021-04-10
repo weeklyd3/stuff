@@ -18,7 +18,7 @@ function getEmbedSelection(iframe) {
 function dizzy() {
 	console.log('You are scrolling. I am DIZZY.')
 }
-document.onscroll=function() {
+window.onscroll=function() {
 	dizzy();
 };
 
@@ -89,6 +89,11 @@ function showTab(evt, cityName) {
 │ autoexec.bat     | Windows Batch File | Execute lines at startup.      |
 └────────────────────────────────────────────────────────────────────────┘
 */
+
+$("body").keydown(function(e){
+    console.log("INFO: Whoa! You are pressing key code "+e.which+"! Great job!");
+});
+
 console.log("Resource Loader is initializing...");
 console.log("Initializing editor...");
 var authorName;
@@ -100,7 +105,7 @@ console.log("Downloading and loading files...");
 		document.getElementById('smallscreen').showModal();
 		console.log("user's screen is very small.")
 	}
-})();
+});
 console.log("LOADED: script.js");
 console.log("LOADED: editor-raw.html");
 console.log("LOADED: style.css");
@@ -188,7 +193,7 @@ function login() {
     //Store some info in the information panel
     document.getElementById('authorSpace').innerHTML=authorName;
     fix("authorSpace",authorName);
-    fix("titleSpace",articleTitle);
+	fix("titleSpace",articleTitle);
     console.log("--> Validating user input...")
     if (authorName==="" || articleTitle==="") {
         console.log("FAILURE: Validation error returned.")
@@ -306,5 +311,40 @@ function startspeak() {
 	recognition.onresult = function(event) {
 		console.log('You said: ', event.results[0][0].transcript);
 	};
+}
+/* VERY EXPERIMENTAL FLAGS. */
+function upload() {
+	var posttime=new Date();
+	console.log("--> Collecting input...")
+	document.getElementById('posterr').value+="\n\n****POST STARTED "+posttime+"!****";
+	document.getElementById('posterr').value+="\nCollecting input...";
+	var content = ifrm.document.getElementById('writehere').innerHTML;
+	var authorName=document.getElementById('authorSpace').innerHTML;
+	var articleTitle=document.getElementById('titleSpace').innerHTML;
+
+	// Spaces are illegal in file names on Unix servers
+	var newauthor=authorName.replace(/ /g,"-");
+	var newtitle=authorName.replace(/ /g,"-");
+
+	try {
+		  let url = "/posts/"+newauthor+'-'+newtitle;
+  let formData = ifrm.document.getElementById('writehere').innerHTML;
+
+  formData.append('file', file)
+
+  fetch(url, {
+    method: 'POST',
+    body: formData
+  })
+  .then(() => { console.log("COMPLETE!") })
+  .catch(() => {
+	console.error(`FAILURE: Upload error.
+	Please try again. If you want to report the error, go to https://github.com/weeklyd3/weeklyd3.github.io/discussions/8 and give me the following error code: 
+	`+err)
+	document.getElementById('posterr').value+=`FAILURE: Upload error.
+	Please try again. If you want to report the error, go to https://github.com/weeklyd3/weeklyd3.github.io/discussions/8 and give me the following error code: 
+	`
+  });
+};
 }
 //EOF

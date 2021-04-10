@@ -242,10 +242,35 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="document.getElementById('download').close();">Cancel</button>
 </dialog>
 <dialog id="smallscreen">
+	<p>Hey, PHD, you've got a small screen.</p>
 	<h1>Warning</h1>
 	<p>Some elements might not fit in this view because your screen resolution is 640&times;480 or lower. Please increase your screen resolution or use a different monitor. Or if you really want to continue:</p>
 	<button onclick="this.parentNode.close();">Continue</button>
+</dialog>
+<dialog id="post">
+	<div id="firstpage">
+		<h1>Post</h1>
+		<p>This wizard will post the file. Before continuing...</p>
+		<textarea style="width:100%;" readonly rows=5>
+ &bull; Make sure it's at least 1/4 screen long! 
+ &bull; Make sure you are connected to the Internet.</textarea>
+ <button onclick="this.parentNode.style.display='none'; document.getElementById('secondpage').style.display='block';">Continue</button><button onclick="this.parentNode.parentNode.close();">Cancel</button>
+	</div>
+	<div id="secondpage" style="display:none;">
+	<h1>Post article!</h1>
+	<p>THIS ACTION CANNOT BE UNDONE!!!</p>
+	<p>This will PERMANENTLY post your article on the page.</p>
+	<p>We will use Node.js to upload the contents, so please do not disconnect your internet.</p>
+	<p>If you are sure:</p>
+	<textarea id="posterr" readonly="readonly" rows="5" style="width:100%;">
+Post has not been started. 
+</textarea><br>
+		<button id="postbutton" onclick="upload">I'm done, now POST!</button>
+		<button onclick="this.parentNode.parentNode.close();">No, return to Editor</button>
+	</div>
+</dialog>
 <!--TA-DA! THE JAVASCRIPT!-->
 <script src="resources/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="resources/script.js"></script>
+<script src="resources/post.js"></script>
