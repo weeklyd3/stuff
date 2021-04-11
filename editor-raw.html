@@ -75,18 +75,19 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 		<option value="100" />
 	</datalist>
 	<button onclick="fontsize()">Apply font size</button>&nbsp;&nbsp;
-    <button onclick="bold(); /*writeSelection(writehere,'&lt;b&gt;','&lt;/b&gt;');*/">Bold</button>
-	<button onclick="writeSelection(writehere,'&lt;i&gt;','&lt;/i&gt;')">Italic</button>
-	<button onclick="writeSelection(writehere,'&lt;u&gt;','&lt;/u&gt;')">Underline</button>
-	<button onclick="writeSelection(writehere,'&lt;sub&gt;','&lt;/sub&gt;')">Subscript</button>
-	<button onclick="writeSelection(writehere,'&lt;sup&gt;','&lt;/sup&gt;')">Superscript</button>
-	<button onclick="writeSelection(writehere,'&lt;h1&gt;','&lt;/h1&gt;')">Heading 1</button>
-	<button onclick="writeSelection(writehere,'&lt;h2&gt;','&lt;/h2&gt;')">Heading 2</button>
-	<button onclick="writeSelection(writehere,'&lt;h3&gt;','&lt;/h3&gt;')">Heading 3</button>
-	<button onclick="writeSelection(writehere,'&lt;h4&gt;','&lt;/h4&gt;')">Heading 4</button>&nbsp;&nbsp;
-	<button onclick="writeSelection(writehere,'&lt;left&gt;','&lt;/left&gt;')">Left Align</button>
-	<button onclick="writeSelection(writehere,'&lt;center&gt;','&lt;/center&gt;')">Center Align</button>
-	<button onclick="writeSelection(writehere,'&lt;right&gt;','&lt;/right&gt;')">Right Align</button>&nbsp;&nbsp;
+    <button onclick="ifrm.document.execCommand('bold',false,null);">Bold</button>
+	<button onclick="ifrm.document.execCommand('italic',false,null);">Italic</button>
+	<button onclick="ifrm.document.execCommand('underline',false,null);">Underline</button>
+	<button onclick="ifrm.document.execCommand('subscript',false,null);">Subscript</button>
+	<button onclick="ifrm.document.execCommand('superscript',false,null);">Superscript</button>
+	<button onclick="h(0)">Normal Paragraph Style</button>
+	<button onclick="h(1)">Heading 1</button>
+	<button onclick="h(2)">Heading 2</button>
+	<button onclick="h(3)">Heading 3</button>
+	<button onclick="h(4)">Heading 4</button>&nbsp;&nbsp;
+	<button onclick="align('left');">Left Align</button>
+	<button onclick="align('center');">Center Align</button>
+	<button onclick="align('right');">Right Align</button>&nbsp;&nbsp;
 	<input type="number" min="0.5" max="1058576" id="lhspace" placeholder="Line height" step="0.5" />
 	<button onclick="lineheight()">Apply line height</button>
 </div>

@@ -82,4 +82,7 @@ $("#writehere").on('keydown keyup mousedown mouseup',function(e){
          $('#position').html(window.getSelection().anchorOffset+1);
        }
  });
+ $("body").keydown(function(e) {
+    console.log("INFO: Whoa! You are pressing key code "+e.which+"! Great job!");
+});
 </script>
