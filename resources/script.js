@@ -2,6 +2,11 @@
 *** download [fixed on 3/22/2021]
 *** Font size (view) [fixed on 3/22/2021]
 */
+function myConfirmation() {
+    return 'Something abnormal is happening.';
+}
+
+window.onbeforeunload = myConfirmation;
 // Access content in iframe
 var ifrm = document.getElementById('writehere');
 ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
@@ -293,13 +298,52 @@ function lineheight() {
 }
 /*Formatting functions
 ----------------------------------------------------*/
-function bold() {
-	var range = ifrm.getSelection().getRangeAt(0);
-	var selectionContents = range.extractContents();
-	var div = document.createElement("span");
-	div.style.fontWeight="bold";
-	div.appendChild(selectionContents);
-	range.insertNode(div);
+/* Yo cursor doesn't look like █! */
+function h(number) {
+	if (number!=0) {
+		var range = ifrm.getSelection().getRangeAt(0);
+		var selectionContents = range.extractContents();
+		var div = document.createElement("h"+number);
+		div.appendChild(selectionContents);
+		range.insertNode(div);
+	} else {
+		var range = ifrm.getSelection().getRangeAt(0);
+		var selectionContents = range.extractContents();
+		var div = document.createElement("span");
+		div.style.fontSize=null;
+		div.style.backgroundColor=null;
+		div.style.color=null;
+		div.appendChild(selectionContents);
+		range.insertNode(div);
+	}
+}
+function strip(html) {
+    var tempDiv = document.createElement("DIV");
+    tempDiv.innerHTML = html;
+    return tempDiv.innerText;
+}
+function align(scheme) {
+	if (scheme==="left") {
+		var range = ifrm.getSelection().getRangeAt(0);
+		var selectionContents = range.extractContents();
+		var div = document.createElement('div');
+		div.style.textAlign='left';
+		div.appendChild(selectionContents);
+		range.insertNode(div);
+	} else if (scheme==="center") {
+		var range = ifrm.getSelection().getRangeAt(0);
+		var selectionContents = range.extractContents();
+		var div = document.createElement('div');
+		div.style.textAlign='center';
+		div.appendChild(selectionContents);
+		range.insertNode(div);
+	} else if (scheme==="right") {
+		var range = ifrm.getSelection().getRangeAt(0);
+		var selectionContents = range.extractContents();
+		var div = document.createElement('div');
+		div.appendChild(selectionContents);
+		range.insertNode(div);
+	}
 }
 function startspeak() {
 	var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
@@ -311,40 +355,5 @@ function startspeak() {
 	recognition.onresult = function(event) {
 		console.log('You said: ', event.results[0][0].transcript);
 	};
-}
-/* VERY EXPERIMENTAL FLAGS. */
-function upload() {
-	var posttime=new Date();
-	console.log("--> Collecting input...")
-	document.getElementById('posterr').value+="\n\n****POST STARTED "+posttime+"!****";
-	document.getElementById('posterr').value+="\nCollecting input...";
-	var content = ifrm.document.getElementById('writehere').innerHTML;
-	var authorName=document.getElementById('authorSpace').innerHTML;
-	var articleTitle=document.getElementById('titleSpace').innerHTML;
-
-	// Spaces are illegal in file names on Unix servers
-	var newauthor=authorName.replace(/ /g,"-");
-	var newtitle=authorName.replace(/ /g,"-");
-
-	try {
-		  let url = "/posts/"+newauthor+'-'+newtitle;
-  let formData = ifrm.document.getElementById('writehere').innerHTML;
-
-  formData.append('file', file)
-
-  fetch(url, {
-    method: 'POST',
-    body: formData
-  })
-  .then(() => { console.log("COMPLETE!") })
-  .catch(() => {
-	console.error(`FAILURE: Upload error.
-	Please try again. If you want to report the error, go to https://github.com/weeklyd3/weeklyd3.github.io/discussions/8 and give me the following error code: 
-	`+err)
-	document.getElementById('posterr').value+=`FAILURE: Upload error.
-	Please try again. If you want to report the error, go to https://github.com/weeklyd3/weeklyd3.github.io/discussions/8 and give me the following error code: 
-	`
-  });
-};
 }
 //EOF
