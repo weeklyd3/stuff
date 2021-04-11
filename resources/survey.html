@@ -1,0 +1,60 @@
+<!-- Hotjar Tracking Code for https://weeklyd3dev.weeklyd3.repl.co -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2343561,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<style>
+	div {
+		border:1px solid black;
+		margin:7px;
+	}
+	.disabled {
+		display:none;
+	}
+</style>
+<title>Automatic Hotjar Survey</title>
+<h1>Hotjar is analyzing your behavior for a survey completed with some input. Click the buttons below to take part. <a href="">Start over</a></h1>
+<h2><a href="javascript:history.go(-1);">Important! If you don't want your clicks to be tracked, click here to go back.</a></h2>
+<div id="role">
+	<p>Question 1</p>
+	<p>i am a</p>
+	<select id="roles" onchange="this.parentNode.style.display='none'; document.getElementById('number').style.display='block';">
+		<option disabled="disabled" class="disabled" selected="selected">--Choose an option--</option>
+		<option value="reader">...reader</option>
+		<option value="author">...author</option>
+	</select>
+</div>
+<div id="number" style="display:none;">
+	<p>Question 2</p>
+	<h3>How many articles have you written or read, based on your role choice before?</h3>
+	<select id="number" onchange="this.parentNode.style.display='none'; document.getElementById('xp').style.display='block';">
+		<option disabled class="disabled" selected>--Choose an option--</option>
+		<option value="none">0</option>
+		<option value="little">1-20</option>
+		<option value="littlemore">21-50</option>
+		<option value="alotmore">51-150</option>
+		<option value="alot">150+</option>
+	</select>
+</div>
+<div id="xp" style="display:none;">
+	<p>Question 3: LAST ONE!</p>
+	<p>How is your experience?</p>
+	<select id="experience" onchange="this.parentNode.style.display='none'; document.getElementById('thankyou').style.display='block';">
+		<option class="disabled" disabled selected>--Choose an option--</option>
+		<option name="one">Really really bad. I don't want to come again.</option>
+		<option name="two">Meh. Still pretty bad.</option>
+		<option name="three">Medium. Not too bad.</option>
+		<option name="four">Pretty nice.</option>
+		<option name="five">Really nice</option>
+	</select>
+</div>
+<div id="thankyou" style="display:none;">
+	<h3>Thank you for completing this survey.</h3>
+	<p>Feel free to hit the Back button now.</p>
+</div>
