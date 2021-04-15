@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Error!</title>
@@ -10,14 +11,27 @@
  &#x25cf; <a href="#" onclick="location.reload();">Reloading the page.</a>
  &#x25cf; <a href="https://github.com/weeklyd3/weeklyd3.github.io">Viewing the source code</a> and correcting broken links (ADVANCED)
 </pre>
-<link rel="stylesheet" href="/resources/style.css">
-  <script src="/resources/jquery.min.js"></script>
-<script>
-document.getElementById('error').innerHTML="We are sorry, "+location.href+" is unavailable.";
+	<link rel="stylesheet" href="/resources/style.css">
+	<script src="/resources/jquery.min.js">
+	</script>
+	<script>
+		var x=location.href;
+		x.replace(/</g, "&lt;");
+		document.getElementById('error').innerHTML="We are sorry, "+x+" is unavailable.";
 $('a').click(
   function() {
   document.getElementById('error').innerHTML="Loading. Please wait...";
-  });
-</script>
-<style>*{text-align:center;} pre{white-space: pre-wrap;}</style>
+});
+
+	</script>
+	<style>
+		* {
+			text-align: center;
+		}
+
+		pre {
+			white-space: pre-wrap;
+		}
+	</style>
+
 </html>
