@@ -20,4 +20,11 @@ textarea {
 button:hover {
 	background-color:#00ffff;
 }
-h1,p,li { font-family: "Times New Roman"; }
+
+#uac::backdrop {
+	background-color:black;
+	opacity:0.9;
+}
+#uac button {
+	height:35px;
+}

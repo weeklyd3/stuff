@@ -1,0 +1,28 @@
+Updates for the software: A complete log with news
+====================================================
+This file contains news for the various security 
+bugs and technical issues. To report an issue, click
+the Issues tab in the GitHub repository, and then click
+"New Issue".
+
+Note: Newest stuff is placed on top of the file. So
+don't scroll to the bottom unless you want something
+really old!
+
+News: Security patch issued for 404.html page!
+====================================================
+It has been pushed out to the Repl.it version and the
+GitHub pages version. It should be fine now!
+
+News: Possible security issue with 404.html page
+====================================================
+Guess what? The 404.HTML file can be used for XSS. 
+Like this:
+
+https://weeklyd3.github.io/<script src="/evilscript.js"></script>
+
+This brings up:
+	We are sorry, https://weeklyd3.github.io/<script src="
+	/evilscript.js"></script> is unavailable.
+But the INNERHTML feature doesn't escape text, so if it was 
+linked to a real evil file, bad stuff could happen!

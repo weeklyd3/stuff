@@ -3,7 +3,7 @@
 <div id="writehere" contenteditable="true" style="border:none; margin:1px; width:100%; height:95%; overflow:scroll;" onblur="this.focus();"></div>
 <div id="statusbar">
 	<span id="wordcount" title="Amount of Words">0</span>
-	<span id="position" title="Cursor horizontal position">0</span>
+	<span id="position" title="Cursor horizontal position">&lt;Not activated></span>
 </div>
 <style>
 	@media print {
@@ -15,17 +15,17 @@
 		}
 	}
 	#statusbar {
-		background-color:#a3a3a3;
+		background-color:#cccccc;
 		width:100%;
 		height:1em;
 		position:fixed;
 		margin:2px;
 		bottom:5%;
-		user-select:all;
-		-o-user-select:all;
-		-ms-user-select:all;
-		-moz-user-select:all;
-		-webkit-user-select:all;
+		user-select:none;
+		-o-user-select:none;
+		-ms-user-select:none;
+		-moz-user-select:none;
+		-webkit-user-select:none;
 	}
 	#writehere:focus {
 		outline: none;
@@ -46,43 +46,47 @@
 <script>
 	document.getElementById('writehere').focus();
 function insertTab() {
-  if (!window.getSelection) return;
-  const sel = window.getSelection();
-  if (!sel.rangeCount) return;
-  const range = sel.getRangeAt(0);
-  range.collapse(true);
-  const span = document.createElement('span');
-  span.appendChild(document.createTextNode('\t'));
-  span.style.whiteSpace = 'pre';
-  range.insertNode(span);
-  // Move the caret immediately after the inserted span
-  range.setStartAfter(span);
-  range.collapse(true);
-  sel.removeAllRanges();
-  sel.addRange(range);
+if (!window.getSelection) return;
+const sel = window.getSelection();
+if (!sel.rangeCount) return;
+const range = sel.getRangeAt(0);
+range.collapse(true);
+const span = document.createElement('span');
+span.appendChild(document.createTextNode('\t'));
+span.style.whiteSpace = 'pre';
+range.insertNode(span);
+// Move the caret immediately after the inserted span
+range.setStartAfter(span);
+range.collapse(true);
+sel.removeAllRanges();
+sel.addRange(range);
 }
 
 $(document).on('keydown', '#writehere', function(e) {
-  if (e.keyCode == 9) {
-    insertTab();
-    e.preventDefault()
-  }
+if (e.keyCode == 9) {
+	insertTab();
+	e.preventDefault()
+}
 });
-$('#writehere').on('input', function () {
-    var text = this.textContent,
-        count = text.trim().replace(/\s+/g, ' ').split(' ').length;
-    
-    $('#wordcount').text(count);
+$(document).ready(function(){
+	$("#writehere").keyup(function(){
+
+	var text = $(this).text().replace(/\s{2,}/g, ' ');
+	var num = text.split(" ").length;
+	$("#wordcount").html(num);
+
+	});
 });
 $("#writehere").on('keydown keyup mousedown mouseup',function(e){
-		   
-       if($(window.getSelection().anchorNode).is($(this))){
-    	  $('#position').html('1')
-       }else{
-         $('#position').html(window.getSelection().anchorOffset+1);
-       }
- });
- $("body").keydown(function(e) {
-    console.log("INFO: Whoa! You are pressing key code "+e.which+"! Great job!");
+		
+	if($(window.getSelection().anchorNode).is($(this))){
+		$('#position').html('1')
+	}else{
+		$('#position').html(window.getSelection().anchorOffset+1);
+	}
+});
+$("body").keydown(function(e) {
+	console.log("INFO: Whoa! You are pressing key code "+e.which+"! Great job!");
 });
 </script>
+<style id="custom"></style>

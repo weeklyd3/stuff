@@ -1,0 +1,85 @@
+<button onclick="history.back(1);" style="height:5%; width:100%;">&laquo; Return to main site</button>
+<link rel="stylesheet" href="resources/style.css" />
+<link rel="stylesheet" href="resources/editor-style.css" />
+<style>
+	.page {
+		height:97%;
+		width:99%;
+		border:1px dotted black;
+		oveflow-y:scroll;
+	}
+	#scrollable {
+		height:95%;
+		width:99%;
+		overflow-y:scroll;
+	}
+	@media print {
+		@page {
+			size:11in 8.5in;
+		}
+		#scrollable {
+			overflow-y:visible !important;
+		}
+		button {
+			display:none !important;
+		}
+		.page {
+			width:100% !important;
+			height:100% !important;
+		}
+	}
+</style>
+<div id="scrollable">
+	<div class="page" style="background-color:#87ceff;">
+		<center>
+			<h1>Welcome</h1>
+			<h2>This tour page will show you around the site.</h2>
+			<p>We're a news site, but we're not like others. Scroll down to learn more.</p>
+		</center>
+	</div>
+	<div class="page" style="background-color:#7cfc00;">
+		<center>
+			<h1>Here, everyone can post.</h1>
+			<h2>There are no restrictions on who can do what.</h2>
+			<p>Anyone can write an article, as long as it does not violate the code of conduct at <a href="resources/code-of-conduct.txt" target="_blank">this link</a>.
+		</center>
+	</div>
+	<div class="page" style="background-color:#FFB6C1;">
+		<center>
+			<h1>Nothing for profit, everything for enjoyment.</h1>
+			<h2>We don't show ads everywhere or track users. Instead, everything's for everyone to enjoy.</h2>
+			<p>Who likes a site with loud, blaring advertisements everywhere you go? Probably no one. So, this site is focused on everything except ruining experience. That's why we don't disrupt anyone or charge money.</p>
+			<p>Just compare:</p>
+			<code>Content<br>AD<br>AD<br>Content<br>AD<br>AD<br>Content</code>
+			<p>Or our website...</p>
+			<code>Content<br>Content<br>Content<br>Content<br>Content</code>
+		</center>
+	</div>
+	<div class="page" style="background-color:#CBC3E3;">
+		<center>
+			<h1>Less spam. Promise!</h1>
+			<h2>We monitor the site for spam regularly.</h2>
+			<p>News is one of the things that gets spammed. For example, an ad about what types of pillows helps you sleep might have promotions for brands of pillows. This is called <i>sponsored content</i>, and only people looking for deals will like it. Don't even try advertising here.</p>
+		</center>
+	</div>
+	<div class="page" style="background-color:	#FFD700;">
+		<center>
+			<h1>Free and open source</h1>
+			<h2>Everything will stay free here.</h2>
+			<p>Additionally, you can check out these links:</p>
+			<ul style="list-style:none;">
+				<li><a target="_blank" href="https://github.com/weeklyd3/weeklyd3.github.io">Source code</a></li>
+				<li><a target="_blank" href="https://github.com/weeklyd3/weeklyd3.github.io/issues">Issue reporter</a></li>
+			</ul>
+		</center>
+	</div>
+	<div class="page">
+		<center>
+			<h1>Now you're done!</h1>
+			<p>Just click the "Return to Main Site" button to go back, or use the Back button. Hope this helped!</p>
+			<p>Type something here:</p>
+			<textarea rows="1" class="auto_height" oninput="auto_height(this);" style="margin:0px !important; height:20px;"></textarea>
+		</center>
+	</div>
+</div>
+<script src="resources/script.js"></script>

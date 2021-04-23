@@ -1,0 +1,38 @@
+THE CODE OF CONDUCT FOR ARTICLES POSTED 
+=======================================
+This file highlights the rules for 
+articles that are posted on this website.
+
+Please note that a violation of this
+code of conduct will result in the 
+user's article being deleted from the
+server.
+
+1. CONTENT
+All content in articles should not
+include:
+ * vulgar language (or "bad words").
+   Anything that is considered 
+   offensive by major dictionaries
+   is considered "not allowed."
+ * copyright violations
+ * Malicious CSS that misleads the
+   properties including, but not 
+   limited to:
+    * ::before
+	* ::after
+	* display
+	* visibility
+	* color
+	* background-color
+ * Malicious links meant to infect
+   computers on purpose. Sometimes,
+   users think the link text is the
+   actual URL, so gaining false 
+   trust by doing this is not allowed.
+2. LICENSES
+People can enforce their own licenses
+for content they post. However, they
+cannot re-brand the source files or
+images made by someone else as their
+own without prior premission.

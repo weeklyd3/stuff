@@ -1,14 +1,16 @@
+<html lang="en">
 <head>
-    <title>Debug Page -- For Developers ONLY!</title>
+	<title>Debug Page -- For Developers ONLY!</title>
 	<link rel="stylesheet" href="resources/style.css" />
-<link rel="stylesheet" href="resources/editor-style.css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="resources/editor-style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();">
 	<div id="loadingmsg" style="background-color:white; position:fixed; top:0; left:0; width:100%; height:100%;">
 		<noscript style="z-index=2; position:fixed; background-color:blue; width:100%; height:100%;">
-		<code style="color:white;">A problem has been detected. Error code: JAVASCRIPT_DISABLED<br>
-This means that JavaScript is disabled in your browser. Please enable JavaScript, purge the cache, reload the page, and try again.<br>
+			<code style="color:white;">A problem has been detected. Error code: JAVASCRIPT_DISABLED<br>
+This means that JavaScript is disabled in your browser. Please enable JavaScript, purge the cache, reload the page, and try again.<br><br>
 WARNING: Please do not delete this message with your Developer Tools. If you are at the main interface, nothing will work.</code></noscript>
 		<div style="text-align:center;">
 			<img src="resources/loading.gif"><br><span id="load1">Please wait...</span><br>
@@ -24,18 +26,19 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<p id="titleSpace">[not set]</p>
 		<div id="zoomLevel"><style>button { font-size:10pt; }</style></div>
 </div>
-<div class="tab" style="overflow-y:scroll;">
-  <button class="tablinks" onclick="showTab(event, 'File')">File</button>
-  <button class="tablinks" onclick="showTab(event, 'Home')">Home</button>
-  <button class="tablinks" onclick="showTab(event, 'Insert')">Insert</button>
-  <button class="tablinks" onclick="showTab(event, 'View')">View</button>
-  <button class="tablinks" onclick="showTab(event, 'Help')">Help</button>
+<div class="tab" style="overflow-y:scroll !important;">
+  <button class="tablinks" id="filebutton" onclick="showTab(event, 'File')">File</button>
+  <button class="tablinks"id="homebutton" onclick="showTab(event, 'Home')">Home</button>
+  <button class="tablinks" id="insertbutton" onclick="showTab(event, 'Insert')">Insert</button>
+  <button class="tablinks" id="viewbutton" onclick="showTab(event, 'View')">View</button>
+  <button class="tablinks" id="helpbutton" onclick="showTab(event, 'Help')">Help</button>
 </div>
 <div height="10%">
 <div id="File" class="tabcontent">
   <button onclick="document.getElementById('download').showModal();" title="Download file for backup purposes">Download</button>
   <button onclick="preview()" title="Preview post">Preview</button>
   <button onclick="document.getElementById('info').style.height='25%';">Reveal information panel (Advanced)</button>
+  <button onclick="document.getElementById('uac').showModal(); document.getElementById('uac').scrollTo(0,0);">Post</button>
   <button title="Quit the editor and start it again" onclick="document.getElementById('quit').showModal();">Quit and restart</button>
   <button onclick="document.getElementById('update').showModal();" title="Reload script files but keep work intact">Update Scripts</button>
 </div>
@@ -74,7 +77,11 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 		<option value="75" />
 		<option value="100" />
 	</datalist>
-	<button onclick="fontsize()">Apply font size</button>&nbsp;&nbsp;
+	<button onclick="fontsize()">Apply font size</button>&nbsp;&nbsp;Text color:
+	<input type="color" id="newcolor" oninput="color()" />
+	Background color: 
+	<input type="color" id="newbgcolor" oninput="bgcolor()" />
+	&nbsp;
     <button onclick="ifrm.document.execCommand('bold',false,null);">Bold</button>
 	<button onclick="ifrm.document.execCommand('italic',false,null);">Italic</button>
 	<button onclick="ifrm.document.execCommand('underline',false,null);">Underline</button>
@@ -93,12 +100,10 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </div>
 
 <div id="Insert" class="tabcontent">
-  <button onclick="insertAtCursor(writehere, '&amp;lt;')">Insert &lt;</button>
-<button onclick="insertAtCursor(writehere, '&amp;gt;')">Insert &gt;</button>
-<button onclick="insertAtCursor(writehere, '&amp;amp;')">Insert &amp;</button>
   <button onclick="document.getElementById('hyperlink').showModal();">Insert Hyperlink</button>
   <button onclick="document.getElementById('image').showModal();">Insert Image/Picture</button>
 	<button onclick="document.getElementById('quote').showModal();">Insert Quote</button>
+	<button onclick="document.getElementById('css').showModal();">Insert Custom Styles</button>
 </div>
 <div id="View" class="tabcontent">
  <button onclick="document.getElementById('zoom').showModal();">Adjust Zoom Level</button>
@@ -120,12 +125,12 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </dialog>
 <dialog id="image">
 	<p>Enter the image URL. (Use a direct link like "http://example.com/file.png".)<br>
-	<input type="url" style="width:100%;" id="image1" value="https://weeklyd3.github.ioresources/sample-image.png">
+	<input type="url" style="width:100%;" id="image1" value="https://weeklyd3.github.io/resources/sample-image.png">
 	</p>
     <p>[OPTIONAL] Enter the alt text. This text will be displayed if the image is unavailable.
     <input type="text" style="width:100%;" id="image2" value="" />
     </p>
-    <p>[OPTIONAL] Enter the title text. This text will be displayed if the user hovers over the image.
+    <p>[OPTIONAL] Enter the title text. This text will be displayed if the user hovers over the image. For best practices, it should be identical to the ALT text above.
     <input type="text" style="width:100%;" id="image3" value="" />
     </p>
 	<button onclick="image()">Finish</button>
@@ -263,11 +268,31 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<p>This will PERMANENTLY post your article on the page.</p>
 	<p>We will use Node.js to upload the contents, so please do not disconnect your internet.</p>
 	<p>If you are sure:</p>
+	<button onclick="document.getElementById('posterr').value='';">Clear</button>&nbsp;<button onclick="save()">Save</button><br>
 	<textarea id="posterr" readonly="readonly" rows="5" style="width:100%;">
 Post has not been started. 
 </textarea><br>
-		<button id="postbutton" onclick="upload">I'm done, now POST!</button>
+		<button id="postbutton" onclick="upload();">I'm done, now POST!</button>
 		<button onclick="this.parentNode.parentNode.close();">No, return to Editor</button>
+	</div>
+</dialog>
+<dialog id="css" style="width:60%;">
+	<p>Enter the CSS code below. WARNING: it updates the post automatically!</p>
+	<br><strong>If something goes weird, consider clearing the text box below.</strong>
+	<textarea id="css1" rows=10 style="width:100%;" oninput="applystyle()"></textarea>
+<br><br>
+<button style="width:100%;" onclick="this.parentNode.close();">OK</button></dialog>
+<dialog id="uac" style="margin:0; width:40%; height:40%;">
+	<div style="background-color:#FFD700; position:-webkit-sticky; position:sticky;top:0;">
+		<strong>An attempt has been made to post your article.</strong>
+		<div style="overflow-y:scroll;">
+			<p>It could be an attacker, or it could be you.</p>
+			<div style="background-color:#ffffff;">
+				<p>Just so you know, posting will make the name, article contents and title will be placed online. This cannot be undone.<br>If there is sensitive information, do not post the article.<br>To cancel, press <kbd>Esc</kbd> or the Cancel button.</p>
+				<p>Please confirm on the dialog below.</p>
+				<button style="background-color:#00ff00;" onclick="document.getElementById('uac').close(); document.getElementById('post').showModal();">Yes, it was me</button><button onclick="document.getElementById('uac').close();">Cancel operation</button>
+			</div>
+		</div>
 	</div>
 </dialog>
 <!--TA-DA! THE JAVASCRIPT!-->
@@ -275,3 +300,5 @@ Post has not been started.
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="resources/script.js"></script>
 <script src="resources/post.js"></script>
+</body>
+</html>

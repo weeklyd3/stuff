@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		*:not(#closebutton) {
+			box-sizing: border-box;
+		}
+
+		#myTable {
+			border-collapse: collapse;
+			width: 100% !important;
+		}
+
+		table,
+		tr,
+		td {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<p id="temp"></p>
+	<form action="javascript:void(0);" autocomplete="off">
+		<label for="searchbox">Search e-mail messages:</label>
+		<input type="text" name="searchbox" id="myInput" placeholder="Search" title="Type something...">
+<input type="submit" onclick="search();" value="Search Mail!" />&nbsp;<button onclick="resetsearch()">Show All Inbox Items</button>
+</form>
+<table id="myTable" >
+	<tr class="header">
+		<th style="width:60%;">Subject</th>
+		<th style="width:40%;">Person</th>
+	</tr>
+	<tr>
+		<td>Critical security alert</td>
+		<td>no-reply@google.com (Google)</td>
+	</tr>
+	<tr>
+		<td>Security warning</td>
+		<td>no-reply@google.com (Google)</td>
+	</tr>
+	<tr>
+		<td>Promotion</td>
+		<td>support@google.com (Google One Support)</td>
+	</tr>
+	<tr>
+		<td>Schedule Update</td>
+		<td>[sender hidden because of confidential mode.]</td>
+	</tr>
+	<tr>
+		<td>Activity has been deleted.</td>
+		<td>[sender hidden because of confidential mode.]</td>
+	</tr>
+	<tr>
+		<td>AAAAAAAA!!! MY EMAIL IS HIDDEN!!!</td>
+		<td>[sender hidden because of confidential mode.]</td>
+	</tr>
+	<tr>
+		<td>Critical security alert -- password changed</td>
+		<td>no-reply@google.com (Google) </td>
+	</tr>
+	<tr>
+		<td>Congratulations on your new e-mail address!</td>
+		<td>[sender hidden because of confidential mode.]</td>
+	</tr>
+	<tr>
+		<td>Confidential mode hides my e-mail! So cool!</td>
+		<td>[sender hidden because of confidential mode.]</td>
+	</tr>
+	<tr>
+		<td>E-mail account created!</td>
+		<td>no-reply@google.com (Google)</td>
+	</tr>
+</table>
+<p id="status">Not started. EVER!</p>
+<div id="sendanemai">
+	<strong>Send e-mail</strong>
+	<form action="javascript:void(0);">
+		<input type="email" id="email" placeholder="Your Fake Address" />
+		<input type="text" id="subject" placeholder="E-mail subject" />
+		<textarea id="contents" rows="10" style="width:100%;" placeholder="Type your message here..."></textarea>
+		<input type="submit" value="Send E-mail" />
+	</form>
+</div>
+<script>
+function search() {
+    document.getElementById("status").innerHTML = "starting...";
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+    var date = new Date();
+    document.getElementById("status").innerHTML = "done @ " + date;
+}
+function resetsearch() {
+	var x=document.getElementById('myInput').value;
+	document.getElementById('temp').innerHTML=x;
+	document.getElementById('myInput').value="";
+	search();
+	document.getElementById('myInput').value=document.getElementById('temp').innerHTML;
+	document.getElementById('temp').innerHTML="";
+}
+function send() {
+	var subject=document.getElementById('subject').value;
+	subject=subject.replace(/</g,"&lt;");
+	var contents=document.getElementById('contents').value;
+	contents=contents.replace(/</g,"&lt;");
+	var email=document.getElementById('email').value;
+	email=email.replace(/</g,"&lt;");
+	var myemail=document.createElement('TR');
+	var subjecthtml=document.createElement('TD');
+	subjecthtml.innerHTML=subject;
+	var emailhtml=document.createElement('TD');
+	emailhtml.innerHTML=email;
+	myemail.append(subjecthtml);
+	myemail.append(emailhtml);
+	var mydatatable=document.getElementById('myTable');
+	mydatatable.prepend(myemail);
+}
+</script>
+
+</body>
+</html>
