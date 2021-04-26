@@ -1,12 +1,14 @@
 <html lang="en">
+
 <head>
-	<title>Debug Page -- For Developers ONLY!</title>
+	<title>editor-raw.html</title>
 	<link rel="stylesheet" href="resources/style.css" />
 	<link rel="stylesheet" href="resources/editor-style.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();">
+<body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();"
+ onmousemove="track(event);" onmousedown="console.log('--> clicked down')" onmouseup="console.log('--> finished click');">
 	<div id="loadingmsg" style="background-color:white; position:fixed; top:0; left:0; width:100%; height:100%;">
 		<noscript style="z-index=2; position:fixed; background-color:blue; width:100%; height:100%;">
 			<code style="color:white;">A problem has been detected. Error code: JAVASCRIPT_DISABLED<br>
@@ -24,6 +26,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<h2>You should consider <a href="#" onclick="document.getElementById('info').style.height='0';">hiding it</a> soon to prevent others from stealing your information.</h2>
 	<p id="authorSpace">[not set]</p>
 	<p id="titleSpace">[not set]</p>
+	<p id="mouse">Not moved</p>
 		<div id="zoomLevel"><style>button { font-size:10pt; }</style></div>
 </div>
 <div class="tab" style="overflow-y:scroll !important;">
@@ -103,6 +106,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
   <button onclick="document.getElementById('hyperlink').showModal();">Insert Hyperlink</button>
   <button onclick="document.getElementById('image').showModal();">Insert Image/Picture</button>
 	<button onclick="document.getElementById('quote').showModal();">Insert Quote</button>
+	<button onclick="document.getElementById('table').showModal();">Insert Table</button>
 	<button onclick="document.getElementById('css').showModal();">Insert Custom Styles</button>
 </div>
 <div id="View" class="tabcontent">
@@ -224,18 +228,6 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<textarea rows="5" id="quote2" style="width:100%;" placeholder="John Doe"></textarea>
 	<button onclick="quote()">Finish</button><br><button onclick="document.getElementById('quote').close();">Cancel</button>
 </dialog>
-<dialog id="fix">
-	<h1>Fix Text &gt; HTML</h1>
-	<p>This procedure will:</p>
-	<ul>
-		<li>&lt; with &amp;lt;</li>
-		<li>&gt; with &amp;gt;</li>
-		<li>&amp; with &amp;amp;</li>
-	</ul>
-	<p>Are you sure you want to continue?</p>
-	<button onclick="fix(writehere)" style="background-color:#00ff00;">Continue</button>
-	<button onclick="document.getElementById('fix').close();">Cancel</button>
-</dialog>
 <dialog id="download">
 	<span>Enter the filename to save as. html extension is added automatically.</span>
 	<input id="filename" type="text" placeholder="My Article" /><br>	<details>
@@ -253,6 +245,15 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<p>Some elements might not fit in this view because your screen resolution is 640&times;480 or lower. Please increase your screen resolution or use a different monitor. Or if you really want to continue:</p>
 	<button onclick="this.parentNode.close();">Continue</button>
 </dialog>
+<dialog id="table">
+	<form action="javascript:void(0);">
+		<label for="rows">Rows:</label><br>
+		<input type="number" style="width:100%;" name="rows" id="table1" required="required" />
+		<label for="cols">Columns:</label><br>
+		<input type="number" style="width:100%;" name="cols" id="table2" required="required" />
+		<input type="submit" value="Insert Table" onclick="table()" />
+	</form>
+</dialog>
 <dialog id="post">
 	<div id="firstpage">
 		<h1>Post</h1>
@@ -266,7 +267,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<h1>Post article!</h1>
 	<p>THIS ACTION CANNOT BE UNDONE!!!</p>
 	<p>This will PERMANENTLY post your article on the page.</p>
-	<p>We will use Node.js to upload the contents, so please do not disconnect your internet.</p>
+	<p>We will use PHP to upload the contents, so please do not disconnect your internet.</p>
 	<p>If you are sure:</p>
 	<button onclick="document.getElementById('posterr').value='';">Clear</button>&nbsp;<button onclick="save()">Save</button><br>
 	<textarea id="posterr" readonly="readonly" rows="5" style="width:100%;">
@@ -274,6 +275,9 @@ Post has not been started.
 </textarea><br>
 		<button id="postbutton" onclick="upload();">I'm done, now POST!</button>
 		<button onclick="this.parentNode.parentNode.close();">No, return to Editor</button>
+	</div>
+	<div id="thirdpage" style="display:none;">
+		<iframe id="postframe" src="resources/upload_helper.html" width="100%" height="100%"></iframe>
 	</div>
 </dialog>
 <dialog id="css" style="width:60%;">

@@ -33,6 +33,7 @@ Contents of this document:
 Summary [A brief description]
 Your Rights [What you can do]
 What You Can't Do [Don'ts]
+Third Party Software [Other Licenses]
 
 1. Summary
  This EULA (End User License Agreement) is ann agreement that licenses the editor software. It should be observed before using any features. If you agree, give consent by clicking "Accept" on the editor's start page. If you do not agree, do so by clicking "Decline" on the editor's start page.
@@ -67,3 +68,6 @@ You have permission to:
  <Me>  It's a surprise!
  Or did you just scroll down randomly and reach this page?
  Anyway, thanks for actually reading this document, and -h-a-v-e---a---g-o-o-d---d-a-y- enjoy your time here!
+5. Third-Party Software
+ This software uses third-party software, as follows:
+  * PHP 7.2.24-0ubuntu0.18.04.7. You may view information and licenses at https://uploader.weeklyd3.repl.co/info.php .

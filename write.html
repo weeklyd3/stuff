@@ -1,92 +1,99 @@
 <title>Article</title>
 <meta name="viewport" content="content-width=device-width,initial-scale=1.0" />
-<div id="writehere" contenteditable="true" style="border:none; margin:1px; width:100%; height:95%; overflow:scroll;" onblur="this.focus();"></div>
+<div id="writehere" contenteditable="true" style="border: none; margin: 1px; width: 100%; height: 95%; overflow: scroll;" onblur="this.focus();"></div>
+<style id="custom"></style>
 <div id="statusbar">
-	<span id="wordcount" title="Amount of Words">0</span>
-	<span id="position" title="Cursor horizontal position">&lt;Not activated></span>
+    <span id="wordcount" title="Amount of Words">Start typing for word count.</span>
+    <span id="position" title="Cursor horizontal position">&lt;Not activated></span>
 </div>
 <style>
-	@media print {
-		#statusbar {
-			display:none !important;
-		}
-		#writehere {
-			overflow:visible !important;
-		}
-	}
-	#statusbar {
-		background-color:#cccccc;
-		width:100%;
-		height:1em;
-		position:fixed;
-		margin:2px;
-		bottom:5%;
-		user-select:none;
-		-o-user-select:none;
-		-ms-user-select:none;
-		-moz-user-select:none;
-		-webkit-user-select:none;
-	}
-	#writehere:focus {
-		outline: none;
-		border-style:hidden;
-	}
-	#wordcount::before {
-		content:"Word count: ";
-	}
-	#position::before {
-		content:" \| Position: ";
-	}
-	img {
-		resize:both;
-	}
+    table,
+    th,
+    td,
+    tr {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    @media print {
+        #statusbar {
+            display: none !important;
+        }
+        #writehere {
+            overflow: visible !important;
+            word-break: break-all !important;
+        }
+    }
+    #statusbar {
+        background-color: #cccccc;
+        width: 100%;
+        height: 1em;
+        position: fixed;
+        margin: 2px;
+        bottom: 5%;
+        user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+    }
+    #writehere:focus {
+        outline: none;
+        border-style: hidden;
+    }
+    #wordcount::before {
+        content: "Word count: ";
+    }
+    #position::before {
+        content: " \| Position: ";
+    }
+    img {
+        resize: both;
+    }
 </style>
 <link rel="stylesheet" href="resources/style.css" />
 <script src="resources/jquery.min.js"></script>
 <script>
-	document.getElementById('writehere').focus();
-function insertTab() {
-if (!window.getSelection) return;
-const sel = window.getSelection();
-if (!sel.rangeCount) return;
-const range = sel.getRangeAt(0);
-range.collapse(true);
-const span = document.createElement('span');
-span.appendChild(document.createTextNode('\t'));
-span.style.whiteSpace = 'pre';
-range.insertNode(span);
-// Move the caret immediately after the inserted span
-range.setStartAfter(span);
-range.collapse(true);
-sel.removeAllRanges();
-sel.addRange(range);
-}
+    document.getElementById("writehere").focus();
+    function insertTab() {
+        if (!window.getSelection) return;
+        const sel = window.getSelection();
+        if (!sel.rangeCount) return;
+        const range = sel.getRangeAt(0);
+        range.collapse(true);
+        const span = document.createElement("span");
+        span.appendChild(document.createTextNode("\t"));
+        span.style.whiteSpace = "pre";
+        range.insertNode(span);
+        // Move the caret immediately after the inserted span
+        range.setStartAfter(span);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+    }
 
-$(document).on('keydown', '#writehere', function(e) {
-if (e.keyCode == 9) {
-	insertTab();
-	e.preventDefault()
-}
-});
-$(document).ready(function(){
-	$("#writehere").keyup(function(){
-
-	var text = $(this).text().replace(/\s{2,}/g, ' ');
-	var num = text.split(" ").length;
-	$("#wordcount").html(num);
-
-	});
-});
-$("#writehere").on('keydown keyup mousedown mouseup',function(e){
-		
-	if($(window.getSelection().anchorNode).is($(this))){
-		$('#position').html('1')
-	}else{
-		$('#position').html(window.getSelection().anchorOffset+1);
-	}
-});
-$("body").keydown(function(e) {
-	console.log("INFO: Whoa! You are pressing key code "+e.which+"! Great job!");
-});
+    $(document).on("keydown", "#writehere", function (e) {
+        if (e.keyCode == 9) {
+            insertTab();
+            e.preventDefault();
+        }
+    });
+    $(document).ready(function () {
+        $("#writehere").keyup(function () {
+            var text = $(this)
+                .text()
+                .replace(/\s{2,}/g, " ");
+            var num = text.split(" ").length;
+            $("#wordcount").html(num);
+        });
+    });
+    $("#writehere").on("keydown keyup mousedown mouseup", function (e) {
+        if ($(window.getSelection().anchorNode).is($(this))) {
+            $("#position").html("1");
+        } else {
+            $("#position").html(window.getSelection().anchorOffset + 1);
+        }
+    });
+    $("body").keydown(function (e) {
+        console.log("INFO: Whoa! You are pressing key code " + e.which + "! Great job!");
+    });
 </script>
-<style id="custom"></style>
