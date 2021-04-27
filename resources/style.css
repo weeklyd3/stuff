@@ -171,6 +171,9 @@ kbd {
 button:focus {
 	border:2px solid #0000ff;
 }
+button {
+	height:35px;
+}
 *:focus {
 	border:2px solid #0000ff;
 }
