@@ -407,7 +407,7 @@ function table() {
 	var rows=document.getElementById('table1').value;
 	var cols = document.getElementById('table2').value;
 	var j;
-	for (j = 0; j <= rows; j++) {
+	for (j = 0; j < rows; j++) {
 		table_elem.innerHTML+="<tr>";
 		var i;
 		for (i = 0; i <= cols; i++) {
