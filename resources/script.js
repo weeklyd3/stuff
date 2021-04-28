@@ -410,7 +410,7 @@ function table() {
 	for (j = 0; j < rows; j++) {
 		table_elem.innerHTML+="<tr>";
 		var i;
-		for (i = 0; i <= cols; i++) {
+		for (i = 0; i < cols; i++) {
 			var tabledata=document.createElement('td');
 			tabledata.innerHTML="insert text here";
 			table_elem.appendChild(tabledata);
