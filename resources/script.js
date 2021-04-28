@@ -220,7 +220,7 @@ function quote() {
 	var speaker = document.getElementById("quote2").value;
 	document.getElementById("writehere").focus();
 	ifrm.document.getElementById("writehere").focus();
-	insert("<blockquote>" + quotedtext + "<br>" + "− " + speaker + "</blockquote><div>");
+	insert("<blockquote>" + quotedtext + "<br>" + "− " + speaker + "</blockquote><div>Text after blockquote");
 	document.getElementById("quote").close();
 }
 function login() {
@@ -419,11 +419,12 @@ function table() {
 	}
 	console.log(table_elem);
 	mytable.appendChild(table_elem);
-	insert(mytable.outerHTML);
+    insert(mytable.outerHTML);
+    document.getElementById('table').close();
 }
 
 function startspeak() {
-	var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+    var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 	recognition.lang = "en-US";
 	recognition.interimResults = false;
 	recognition.maxAlternatives = 5;
