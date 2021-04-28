@@ -419,7 +419,7 @@ function table() {
 	}
 	console.log(table_elem);
 	mytable.appendChild(table_elem);
-	insert(mytable.innerHTML);
+	insert(mytable.outerHTML);
 }
 
 function startspeak() {
