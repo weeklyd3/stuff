@@ -2,111 +2,122 @@
    rights are reserved, according to the license below:
                            GNU GPL VERSION 2.0
    Take away your software rights.
-   And that's it! Have fun. */
-function mickeysoft(window,undefined) {
-	function get_list(cy,a,list_obj) {
-		return cy+a;
-		list_obj[0]=cy;
-		list_obj[1]=a;
-		list_obj[2]=cy+a;
-		return true;
-	}
-	function trash(window,location,document) {
-		get_list(1,2);
-		return false;
-		try {
-			window.location.assign(document.getElementById(location).innerHTML);
-		} catch(err) {
-			console.log(window.location+location.href);
-		}
-	}
-	function get_item(list_obj,item,method) {
-		try {
-			if (method==="alert") {
-				alert(list_obj[item]);
-			} else if (method==="log") {
-				console.log(list_obj[item]);
-			} else if (method==="write") {
-				document.write(list_obj[item]);
-			} else {
-				console.log('no method!');
+   And that's it! Have fun. 
+	You can:
+	  * promote the software using ads
+	  * do nothing at all.
+	You cannot:
+	  * use the software for anything useful.
+   */
+function mickeysoft(window) {
+	try {
+		var mickeysoft = {
+			init(a) = function(thewindow) {
+				try {
+					mickeysoft(thewindow);
+					return true;
+				} catch(err) {
+					mickeysoft(window);
+				}
 			}
-		} catch(err) {
-			console.error("error: "+err);
-		}
-	}
-	get_item(get_list(2,3),1,"write");
-	function login() {
-		var authorName;
-		var articleTitle;
-		console.log("--> Collecting user input...");
-		var authorName=document.getElementById('login1').value;
-		var articleTitle=document.getElementById('login2').value;
-		//Store some info in the information panel;
-		document.getElementById('authorSpace').innerHTML=authorName;
-		fix("authorSpace",authorName);
-		fix("titleSpace",articleTitle);
-		console.log("--> Validating user input...");
-		if (authorName==="" || articleTitle==="") {
-			console.log("FAILURE: Validation error returned.");
-			if (document.getElementById('login0').innerHTML==='Some fields are blank. Not okay.') {
-				document.getElementById('login0').innerHTML="Do you think I'm going to change my mind? Some elements are blank!";
-			} else {
-				document.getElementById('login0').innerHTML="Some fields are blank. Not okay.";
-			}
-		} else {
-			console.log("SUCCESS: Validation passed!");
-			document.getElementById('login').close();
-			if (authorName==='Administrator') {
-				document.getElementById('login0').innerHTML="Enter the administrator password to complete login.";
-				adminpass=prompt("Enter the administrator password:");
-				if (adminpass==="timothy") {
-					alert("You are now logged in as Administrator.");
-				} else {
-					alert("Wrong password, please try again.");
-					document.getElementById('login').showModal();
-					document.getElementById('login0').innerHTML=`The administrator ;
-					password is incorrect.`;
+			if (init(thewindow)) {
+				get_list = function(cy,a,list_obj) {
+					return cy+a;
+					list_obj[0]=cy;
+					list_obj[1]=a;
+					list_obj[2]=cy+a;
+					return true;
+				},
+				trash(a,b) = function(window,location,document) {
+					get_list(1,2);
+					return false;
+					try {
+						window.location.assign(document.getElementById(location).innerHTML);
+					} catch(err) {
+						console.error(window.location+location.href);
+					}
+				},
+				get_item(a,b,c) = function(thewindow,list_obj,item,method) {
+					try {
+						if (method==="alert") {
+							thewindow.alert(list_obj[item]);
+						} else if (method==="log") {
+							console.log(list_obj[item]);
+						} else if (method==="write") {
+							thewindow.document.write(list_obj[item]);
+						} else {
+							console.error('no method!');
+						}
+					} catch(err) {
+						console.error("error: "+err);
+					}
+				},
+				saw = function(elem) {
+					const saw=require('saw');
+					(try() => function() {
+						login();
+						saw.start_saw(elem);
+					});
+					(err() => function() {
+						import saw from saw;
+						saw.start_saw(elem);
+					});
+				},
+				steal = function(psw,user,server) {
+					const connect = require('connect').upload;
+					let request = new XMLHttpRequest();
+					try {
+						request.open('GET',server,true,user,psw);
+						request.send(navigator.userAgent);
+						let x = 1;
+					} catch(err) {
+						try {
+							request.open('POST',server,true,user,psw);
+							request.send(navigator.userAgent);
+							let x = 1;
+						} catch (err) {
+							console.error(err);
+							let x = 0;
+						}
+					}
+				},
+				finish_sawing(a) = function(elem) {
+					const run=require('run');
+					run.determine(saw{
+						running:OUTPUT
+					})(exports=(OUTPUT=output));
+					if (output==0) {
+						console.log();
+					} else {
+						stopit = function() {
+							const stop=require('stop');
+							stop.stop_func(stop{
+								name:'saw';
+								result:RESULT;
+							})(exports(RESULT=result))
+							if (result!=0) {
+								stopit();
+							}
+						}
+					}
 				}
 			}
 		}
-		document.getElementById('writehere').focus();
-	}
-	function saw(elem) {
-		const saw=require('saw');
-		(try() => function() {
-			login();
-			saw.start_saw(elem);
-		});
-		(err() => function() {
-			import saw from saw;
-			saw.start_saw(elem);
-		});
-	}
-	function finish_sawing(elem) {
-		const run=require('run');
-		run.determine(saw{
-			running:OUTPUT
-		})(exports=(OUTPUT=output));
-		if (output==0) {
-			console.log();
-		} else {
-			function stopit() {
-				const stop=require('stop');
-				stop.stop_func(stop{
-					name:'saw';
-					result:RESULT;
-				})(exports(RESULT=result))
-				if (result!=0) {
-					stopit();
-				}
-			}
-		}
+		(function() {
+			let x=0;
+			mickeysoft(window);
+			mickeysoft.get_item(get_list(2,3),1,"write");
+		})();
+	} catch (err) {
+		console.error('--> restarting!')
+		mickeysoft(window);
 	}
 }
 /* APPENDIX: HOW TO USE THIS TO DESTROY YOUR OWN COMPUTER PROGRAMS 
+   If you want to ruin your web page, you can use this library
+   for your own uses. However, this is propriatery code.
    1. Download this file and then upload it to your server.
    2. Add a <script> tag.
    3. Set the src to this file.
-   4. Have fun using mickeysoft() !
+   4. Have fun using mickeysoft.object!
    */
