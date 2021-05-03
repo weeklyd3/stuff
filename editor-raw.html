@@ -7,8 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();"
- onmousemove="track(event);" onmousedown="console.log('--> clicked down')" onmouseup="console.log('--> finished click');">
+<body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();" onmousedown="console.log('--> clicked down')" onmouseup="console.log('--> finished click');">
 	<div id="loadingmsg" style="background-color:white; position:fixed; top:0; left:0; width:100%; height:100%;">
 		<noscript style="z-index=2; position:fixed; background-color:blue; width:100%; height:100%;">
 			<code style="color:white;">A problem has been detected. Error code: JAVASCRIPT_DISABLED<br>
@@ -85,6 +84,9 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	Background color: 
 	<input type="color" id="newbgcolor" oninput="bgcolor()" />
 	&nbsp;
+	<button onclick="bullet()">Bulleted List</button>
+	<button onclick="number()">Numbered List</button>
+	&nbsp;
     <button onclick="ifrm.document.execCommand('bold',false,null);">Bold</button>
 	<button onclick="ifrm.document.execCommand('italic',false,null);">Italic</button>
 	<button onclick="ifrm.document.execCommand('underline',false,null);">Underline</button>
@@ -111,10 +113,13 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </div>
 <div id="View" class="tabcontent">
  <button onclick="document.getElementById('zoom').showModal();">Adjust Zoom Level</button>
+ <button onclick="this.style.display='none'; document.getElementById('show').style.display='inline'; ifrm.document.getElementById('statusbar').style.display='none';" id="hide">Hide status bar</button>
+  <button onclick="this.style.display='none'; document.getElementById('hide').style.display='inline'; ifrm.document.getElementById('statusbar').style.display='block';" style="display:none;" id="show">Show status bar</button>
 </div>
 <div id="Help" class="tabcontent">
  <button onclick="document.getElementById('help').showModal();">Get Help</button>
  <button onclick="document.getElementById('help1').showModal();">Quick Help</button>
+ <button onclick="about()">Software Information</button>
 </div>
 <div width="100%" height="75%">
 <iframe id="writehere" style="border:1px solid black;" frameBorder=1 src="write.html" width=100% height=75%></iframe>

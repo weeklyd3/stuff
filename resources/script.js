@@ -92,6 +92,14 @@ function insert(dahtml) {
 		}
 	}
 }
+function about() {
+	var mywindow = window.open("about:blank", "", "width=400,height=300");
+	mywindow.document.write('<link rel="stylesheet" href="https://weeklyd3.github.io/resources/style.css" />');
+	mywindow.document.write('<marquee style="height:90%;" direction="up"><h1>')
+	mywindow.document.write('This program is free software, it can be distributed as long as proper attribution is provided.');
+	mywindow.document.write('<br>(C) Weekly D3 2021.</h1></marquee>')
+	mywindow.document.write('<button style="width:100%; margin:auto; padding:auto;" onclick="window.close();">Close Window</button>')
+}
 function showTab(evt, cityName) {
 	//Insert blank line for readibility
 	console.log("           ");
@@ -422,7 +430,30 @@ function table() {
     insert(mytable.outerHTML);
     document.getElementById('table').close();
 }
-
+function bullet() {
+	var range = ifrm.getSelection().getRangeAt(0);
+	var selectionContents = range.extractContents();
+	var div = document.createElement("ul");
+	var a = document.createElement('li');
+	a.appendChild(selectionContents);
+	div.appendChild(a);
+	var big = document.createElement('span');
+	big.appendChild(div);
+	big.innerHTML+="[text after]";
+	range.insertNode(big);
+}
+function number() {
+	var range = ifrm.getSelection().getRangeAt(0);
+	var selectionContents = range.extractContents();
+	var div = document.createElement("ol");
+	var a = document.createElement('li');
+	a.appendChild(selectionContents);
+	div.appendChild(a);
+	var big = document.createElement('span');
+	big.appendChild(div);
+	big.innerHTML+="[text after]";
+	range.insertNode(big);
+}
 function startspeak() {
     var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 	recognition.lang = "en-US";
@@ -447,4 +478,11 @@ ifrm.document.onkeydown = function (e) {
 		ifrm.print();
 	}
 };
+
+document.getElementById('login').onkeydown = function(e) {
+	if (e.keycode == 27) {
+		e.preventDefault();
+		document.getElementById('login').showModal();
+	}
+}
 //EOF
