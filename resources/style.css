@@ -159,7 +159,7 @@ iframe {
     resize: none;
 }
 *:not(pre,code,textarea) {
-    font-family: -apple-system, "Tahoma", "Verdana","Arial", sans-serif;
+    font-family: -apple-system, -system-ui,"Tahoma", "Verdana","Arial", sans-serif;
     font-weight: auto;
 }
 kbd {
