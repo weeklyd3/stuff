@@ -181,3 +181,9 @@ table,th,td,tr {
 	border:1px solid black;
 	border-collapse:collapse;
 }
+
+blockquote {
+	border-left: 2px solid gray;
+	padding: 0px 0px 0px 10px;
+	color: gray;
+}
