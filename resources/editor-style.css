@@ -1,25 +1,9 @@
 /* This document offers additional styling for the editor interface. */
-button {
-	height:100%;
-	background-color:white;
-	color:black;
-	transition:background-color 0.3s;
-    font-size:13px;
-	/* Vendor prefixes are so annoying. I need FIVE OF THEM! FIVE! */
-	user-select:none;
-	-o-user-select:none;
-	-ms-user-select:none;
-	-moz-user-select:none;
-	-webkit-user-select:none;
-}
 
 textarea {
 	font-size:13px;
 }
 
-button:hover {
-	background-color:#00ffff;
-}
 
 #uac::backdrop {
 	background-color:black;
@@ -27,4 +11,7 @@ button:hover {
 }
 #uac button {
 	height:35px;
+}
+.tabcontent button {
+	height:100%;
 }

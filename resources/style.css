@@ -181,3 +181,32 @@ table,th,td,tr {
 	border:1px solid black;
 	border-collapse:collapse;
 }
+
+blockquote {
+	border-left: 2px solid gray;
+	padding: 0px 0px 0px 10px;
+	color: gray;
+}
+button {
+	background-color:white;
+	color:black;
+	transition:background-color 0.3s;
+    font-size:13px;
+	/* Vendor prefixes are so annoying. I need FIVE OF THEM! FIVE! */
+	user-select:none;
+	-o-user-select:none;
+	-ms-user-select:none;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+}
+
+button:hover {
+	background-color:#00ffff;
+}
+dialog {
+	border:1px solid black;
+}
+dialog::backdrop {
+	background-color:black;
+	opacity:0.3;
+}
