@@ -81,7 +81,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	</datalist>
 	<button onclick="fontsize()">Apply font size</button>&nbsp;&nbsp;Text color:
 	<input type="color" id="newcolor" oninput="color()" />
-	Background color: 
+	Background color:
 	<input type="color" id="newbgcolor" oninput="bgcolor()" />
 	&nbsp;
 	<button onclick="bullet()">Bulleted List</button>
@@ -147,8 +147,8 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<button onclick="document.getElementById('image').close();">Close</button>
 </dialog>
 <dialog id="zoom">
-	<strong>WARNING⚠: Zoom level might make text on buttons unreadable and will not affect document font size!</strong> 
-	<p>Enter the view text size in points (default is 10): 
+	<strong>WARNING⚠: Zoom level might make text on buttons unreadable and will not affect document font size!</strong>
+	<p>Enter the view text size in points (default is 10):
 	<input type="number" id="zoom1"></p>
 	<button onclick="zoom()">Apply My Changes</button>
 	<button onclick="document.getElementById('zoom').close();">Close window</button>
@@ -231,10 +231,14 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<div style="width:90%; height:10%;"><button height="100%" width="100%" onclick="document.getElementById('apps').close();">Minimize</button></div>
 </dialog>
 <dialog id="quote">
+	<p><small><em>click on any of the paragraphs under the labels to edit them.</em></small></p>
+	<button onclick="document.execCommand('bold');"><strong>B</strong></button>
+	<button onclick="document.execCommand('italic');"><em>I</em></button>
+	<button onclick="document.execCommand('underline');"><ins>U</ins></button>
 	<p>Text of the quote:</p>
-	<textarea rows="5" id="quote1" style="width:100%;" placeholder="I am saying this sentence."></textarea>
+	<div contenteditable="true" style="width:100%; outline:none !important;" id="quote1">i&rsquo;m saying this!</div>
 	<p>Person who said the quote:</p>
-	<textarea rows="5" id="quote2" style="width:100%;" placeholder="John Doe"></textarea>
+	<div contenteditable="true" style="width:100%; outline:none !important;" id="quote2">person here</div>
 	<button onclick="quote()">Finish</button><br><button onclick="document.getElementById('quote').close();">Cancel</button>
 </dialog>
 <dialog id="download">
@@ -268,7 +272,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 		<h1>Post</h1>
 		<p>This wizard will post the file. Before continuing...</p>
 		<textarea style="width:100%;" readonly rows=5>
- &bull; Make sure it's at least 1/4 screen long! 
+ &bull; Make sure it's at least 1/4 screen long!
  &bull; Make sure you are connected to the Internet.</textarea>
  <button onclick="this.parentNode.style.display='none'; document.getElementById('secondpage').style.display='block';">Continue</button><button onclick="this.parentNode.parentNode.close();">Cancel</button>
 	</div>
@@ -280,7 +284,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 	<p>If you are sure:</p>
 	<button onclick="document.getElementById('posterr').value='';">Clear</button>&nbsp;<button onclick="save()">Save</button><br>
 	<textarea id="posterr" readonly="readonly" rows="5" style="width:100%;">
-Post has not been started. 
+Post has not been started.
 </textarea><br>
 		<button id="postbutton" onclick="upload();">I'm done, now POST!</button>
 		<button onclick="this.parentNode.parentNode.close();">No, return to Editor</button>

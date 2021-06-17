@@ -12,8 +12,8 @@ function auto_height(elem) {
 	elem.style.height = elem.scrollHeight + "px";
 }
 function track(e) {
-	var message='Mouse: '+e.clientX+', '+e.clientY; 
-	document.getElementById('mouse').innerHTML=message; 
+	var message='Mouse: '+e.clientX+', '+e.clientY;
+	document.getElementById('mouse').innerHTML=message;
 }
 // Access content in iframe
 var ifrm = document.getElementById("writehere");
@@ -224,8 +224,8 @@ function preview() {
 	document.getElementById("preview2").style.display = "none";
 }
 function quote() {
-	var quotedtext = document.getElementById("quote1").value;
-	var speaker = document.getElementById("quote2").value;
+	var quotedtext = document.getElementById("quote1").innerHTML;
+	var speaker = document.getElementById("quote2").innerHTML;
 	document.getElementById("writehere").focus();
 	ifrm.document.getElementById("writehere").focus();
 	insert("<blockquote>" + quotedtext + "<br>" + "− " + speaker + "</blockquote><div>Text after blockquote");
@@ -422,7 +422,7 @@ function table() {
 			var tabledata=document.createElement('td');
 			tabledata.innerHTML="insert text here";
 			table_elem.appendChild(tabledata);
-		}	
+		}
 		table_elem.innerHTML+="</tr>";
 	}
 	console.log(table_elem);
