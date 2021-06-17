@@ -5,6 +5,8 @@
 	<link rel="stylesheet" href="resources/style.css" />
 	<link rel="stylesheet" href="resources/editor-style.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="resources/dialogPolyfill/dialog-polyfill.css" />
+	<script src="resources/dialogPolyfill/dialog-polyfill.js"></script>
 </head>
 
 <body onload="document.getElementById('loadingmsg').style.display='none'; document.getElementById('login').showModal();" onmousedown="console.log('--> clicked down')" onmouseup="console.log('--> finished click');">
@@ -317,5 +319,9 @@ Post has not been started.
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="resources/script.js"></script>
 <script src="resources/post.js"></script>
+<!-- add dialog polyfill -->
+<script>
+	    var dialog = document.querySelector('dialog');
+    dialogPolyfill.registerDialog(dialog);</script>
 </body>
 </html>
