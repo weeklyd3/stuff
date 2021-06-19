@@ -321,7 +321,10 @@ Post has not been started.
 <script src="resources/post.js"></script>
 <!-- add dialog polyfill -->
 <script>
-	    var dialog = document.querySelector('dialog');
-    dialogPolyfill.registerDialog(dialog);</script>
+var dialogs = document.getElementsByTagName('dialog');
+for (i=0; i<dialogs.length; i++) {
+	dialogPolyfill.registerDialog(dialogs[i]);
+}
+</script>
 </body>
 </html>
