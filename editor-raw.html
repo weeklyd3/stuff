@@ -162,7 +162,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </dialog>
 <dialog id="quit">
 	<h1>Quit editor and start fresh?</h1>
-	<b>WARNING:&nbsp;</b><span>All unsaved work will be lost! Quit anyway?</span><br><strong>To download, click File &gt; Download.</strong><br /><br />
+	<strong>WARNING:&nbsp;</strong><span>All unsaved work will be lost! Quit anyway?</span><br><strong>To download, click File &gt; Download.</strong><br /><br />
 	<button onclick="document.getElementById('quit').close();">Cancel</button>
 	<span>&nbsp;&nbsp;</span>
 	<button onclick="location.reload();" style="color:white; background-color:red;">Exit</button>
@@ -209,7 +209,7 @@ WARNING: Please do not delete this message with your Developer Tools. If you are
 </dialog>
 <dialog id="login" style="width:45%;">
     <h1>Log In</h1>
-    <p id="login0">Enter the information.</p><br>
+    <p id="login0">Enter the information. <a href="#" onclick="ifrm.document.getElementById('writehere').onblur='';this.outerHTML='';">Are you having trouble focusing the text fields?</a></p><br>
 	<span id="login3">
     <a href="#" id="login4" onclick="document.getElementById('login3').innerHTML='This information is used to categorize posts and will be removed if you reload the page. You can view it at any time by clicking <strong>Reveal Information Panel</strong> on the File tab.<br><br>You can stay completely anonymous if you want to. There are no restrictions to what your username can be, as long as:<ul><li>it does not include hate speech or bullying,</li><li>or it does not impersonate someone else.</li></ul>';">Why do we need this information?</a></span><br>
     <input type="text" id="login1" placeholder="Your Name" width="100%" /><br><br>
