@@ -1,5 +1,5 @@
 ---
-name: template
+name: Issue
 about: For issue reports (ISSUE REPORTS ONLY!!!).
 title: Bug title report (something descriptive)
 labels: 'bug'
