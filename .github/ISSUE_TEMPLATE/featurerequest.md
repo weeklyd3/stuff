@@ -1,7 +1,7 @@
 ---
-name: template
-about: For issue reports (ISSUE REPORTS ONLY!!!).
-title: Bug title report (something descriptive)
+name: Feature Request
+about: For feature requests (FEATURE REQUESTS ONLY!!!)
+title: Type one-liner summary
 labels: 'feature-request'
 assignees: ''
 
